@@ -1,4 +1,7 @@
-<html>
+<?php
+$base_url = 'http://api.imagefilters.com';
+$version = 'v1.0';
+?><html>
   <head>
     <link href="css/dbg.css" rel="stylesheet" type="text/css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -21,19 +24,19 @@
       <option value="pixelate">Pixelate</option>
     </select>
     <br /><br /><br />
-    <form id="if_negate" class="show" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=negate" method="POST">
+    <form id="if_negate" class="show" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=negate" method="POST">
       NEGATE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_grayscale" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=grayscale&out=png" method="POST">
+    <form id="if_grayscale" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=grayscale&out=png" method="POST">
       GRAYSCALE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_brightness" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=brightness&out=gif" method="POST">
+    <form id="if_brightness" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=brightness&out=gif" method="POST">
       BRIGHTNESS<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
@@ -43,7 +46,7 @@
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_contrast" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=contrast&out=jpeg" method="POST">
+    <form id="if_contrast" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=contrast&out=jpeg" method="POST">
       CONTRAST<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
@@ -53,7 +56,7 @@
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_colorize" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=colorize" method="POST">
+    <form id="if_colorize" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=colorize" method="POST">
       COLORIZE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <table>
@@ -80,37 +83,37 @@
       </table>
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_edgedetect" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=edgedetect&out=png" method="POST">
+    <form id="if_edgedetect" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=edgedetect&out=png" method="POST">
       EDGE DETECT<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_emboss" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=emboss&out=gif" method="POST">
+    <form id="if_emboss" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=emboss&out=gif" method="POST">
       EMBOSS<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_gaussianblur" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=gaussianblur&out=jpg" method="POST">
+    <form id="if_gaussianblur" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=gaussianblur&out=jpg" method="POST">
       GAUSSIAN BLUR<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_selectiveblur" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=selectiveblur" method="POST">
+    <form id="if_selectiveblur" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=selectiveblur" method="POST">
       SELECTIVE BLUR<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_meanremoval" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=meanremoval&out=png" method="POST">
+    <form id="if_meanremoval" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=meanremoval&out=png" method="POST">
       MEAN REMOVAL<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_smooth" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=smooth&out=gif" method="POST">
+    <form id="if_smooth" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=smooth&out=gif" method="POST">
       SMOOTH<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
@@ -120,7 +123,7 @@
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_pixelate" class="hide" enctype="multipart/form-data" action="http://api.imagefilters.com/v1.0/images/filter?name=pixelate&out=jpeg" method="POST">
+    <form id="if_pixelate" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=pixelate&out=jpeg" method="POST">
       PIXELATE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
