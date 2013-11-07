@@ -1,0 +1,95 @@
+[26-Aug-2013 00:42:07] PHP Fatal error:  Call to undefined function neka_funkcija() in D:\www\vhosts\api.imagefilters.com\www\index.php on line 3
+[26-Aug-2013 00:42:07] PHP Stack trace:
+[26-Aug-2013 00:42:07] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 00:43:00] PHP Fatal error:  Call to undefined function neka_funkcija() in D:\www\vhosts\api.imagefilters.com\www\index.php on line 3
+[26-Aug-2013 00:43:00] PHP Stack trace:
+[26-Aug-2013 00:43:00] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 01:02:35] PHP Fatal error:  Call to undefined function neka_funkcija() in D:\www\vhosts\api.imagefilters.com\www\index.php on line 5
+[26-Aug-2013 01:02:35] PHP Stack trace:
+[26-Aug-2013 01:02:35] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 01:03:35] PHP Fatal error:  Call to undefined function neka_funkcija() in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:03:35] PHP Stack trace:
+[26-Aug-2013 01:03:35] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 01:07:13] PHP Fatal error:  Call to undefined function neka_funkcija() in D:\www\vhosts\api.imagefilters.com\www\index.php on line 8
+[26-Aug-2013 01:07:13] PHP Stack trace:
+[26-Aug-2013 01:07:13] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 01:11:14] PHP Parse error:  syntax error, unexpected $end in D:\www\vhosts\api.imagefilters.com\www\index.php on line 5
+[26-Aug-2013 01:15:28] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:25:38] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:26:23] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:26:43] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:34:55] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 01:36:56] PHP Fatal error:  Uncaught exception 'Exception' in D:\www\vhosts\api.imagefilters.com\www\index.php:6
+Stack trace:
+#0 {main}
+  thrown in D:\www\vhosts\api.imagefilters.com\www\index.php on line 6
+[26-Aug-2013 22:04:11] PHP Fatal error:  Access to undeclared static property: Api::$_app in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php on line 16
+[26-Aug-2013 22:04:11] PHP Stack trace:
+[26-Aug-2013 22:04:11] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:04:11] PHP   2. Api::createApplication() D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:04:11] PHP   3. Core_Application->__construct() D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:04:11] PHP   4. Api::setApplication() D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php:6
+[26-Aug-2013 22:04:32] PHP Fatal error:  Access to undeclared static property: Api::$_app in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php on line 16
+[26-Aug-2013 22:04:32] PHP Stack trace:
+[26-Aug-2013 22:04:32] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:04:32] PHP   2. Api::createApplication() D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:04:32] PHP   3. Core_Application->__construct() D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:04:32] PHP   4. Api::setApplication() D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php:6
+[26-Aug-2013 22:13:29] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on '10.229.118.14' (10060) in C:\Users\John\Documents\NetBeansProjects\GBI_srb\srb\goautodial-agent\dbconnect.php on line 44
+[26-Aug-2013 22:13:29] PHP Stack trace:
+[26-Aug-2013 22:13:29] PHP   1. {main}() C:\Users\John\Documents\NetBeansProjects\GBI_srb\srb\goautodial-agent\vicidial.php:0
+[26-Aug-2013 22:13:29] PHP   2. require() C:\Users\John\Documents\NetBeansProjects\GBI_srb\srb\goautodial-agent\vicidial.php:359
+[26-Aug-2013 22:13:29] PHP   3. mysql_connect() C:\Users\John\Documents\NetBeansProjects\GBI_srb\srb\goautodial-agent\dbconnect.php:44
+[26-Aug-2013 22:13:35] PHP Fatal error:  Access to undeclared static property: Api::$_app in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php on line 16
+[26-Aug-2013 22:13:35] PHP Stack trace:
+[26-Aug-2013 22:13:35] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:13:35] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:13:35] PHP   3. Core_Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:13:35] PHP   4. Api::setApplication($app = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php:6
+[26-Aug-2013 22:14:30] PHP Fatal error:  Access to undeclared static property: Api::$_app in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php on line 16
+[26-Aug-2013 22:14:30] PHP Stack trace:
+[26-Aug-2013 22:14:30] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:14:30] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:14:30] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:14:30] PHP   4. Api::setApplication($app = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php:6
+[26-Aug-2013 22:15:32] PHP Fatal error:  Access to undeclared static property: Api::$_app in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php on line 17
+[26-Aug-2013 22:15:32] PHP Stack trace:
+[26-Aug-2013 22:15:32] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:15:32] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:15:32] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:15:32] PHP   4. Api::setApplication($app = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php:6
+[26-Aug-2013 22:17:15] PHP Notice:  Undefined variable: config in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php on line 8
+[26-Aug-2013 22:17:15] PHP Stack trace:
+[26-Aug-2013 22:17:15] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:17:15] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:17:15] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:17:17] PHP Notice:  Undefined variable: config in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php on line 11
+[26-Aug-2013 22:17:17] PHP Stack trace:
+[26-Aug-2013 22:17:17] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:17:17] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:17:17] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:17:49] PHP Notice:  Undefined variable: config in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php on line 8
+[26-Aug-2013 22:17:49] PHP Stack trace:
+[26-Aug-2013 22:17:49] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:17:49] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:17:49] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
+[26-Aug-2013 22:17:49] PHP Notice:  Undefined variable: config in D:\www\vhosts\api.imagefilters.com\www\protected\classes\Core\Application.php on line 11
+[26-Aug-2013 22:17:49] PHP Stack trace:
+[26-Aug-2013 22:17:49] PHP   1. {main}() D:\www\vhosts\api.imagefilters.com\www\index.php:0
+[26-Aug-2013 22:17:49] PHP   2. Api::createApplication($config = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\index.php:8
+[26-Aug-2013 22:17:49] PHP   3. Application->__construct($conf = *uninitialized*) D:\www\vhosts\api.imagefilters.com\www\protected\classes\Api.php:8
