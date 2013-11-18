@@ -12,8 +12,8 @@ class Image_Filter_Colorize extends Image_Filter_Filter {
   protected $blue;
   protected $alpha;
 
-  public function __construct($dimage, $args) {
-    parent::__construct($dimage, $args);
+  public function __construct($dimage, $image_obj, $args) {
+    parent::__construct($dimage, $image_obj, $args);
     $this->filter = IMG_FILTER_COLORIZE;
     if (!isset($this->red) || !isset($this->green)
             || !isset($this->blue) || !isset($this->alpha)) {

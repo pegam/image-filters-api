@@ -16,6 +16,9 @@ jQuery(document).ready(function($) {
     form.find('input[type=text]').each(function() {
       form_action += '&' + $(this).attr('class') + '=' + $(this).val();
     });
+    form.find('input[type=checkbox]').each(function() {
+      form_action += '&' + $(this).attr('class') + '=' + this.checked;
+    });
     form.attr('action', form_action);
     form.submit();
   });

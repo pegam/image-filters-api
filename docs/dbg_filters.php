@@ -6,7 +6,7 @@ $version = 'v1.0';
     <link href="css/dbg.css" rel="stylesheet" type="text/css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/dbg.js"></script>
-    <title>DBG</title>
+    <title>DBG FILTERS</title>
   </head>
   <body>
     <select id="select_filter">

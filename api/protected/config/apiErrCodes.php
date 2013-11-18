@@ -78,4 +78,8 @@ return array(
         'message'  => "Image filter 'Pixelate' is missing argument or wrong value for argument 'size'.",
         'moreInfo' => "",
     ),
+    20 => array(
+        'message'  => "Image '{action}' is missing argument or wrong value for argument.",
+        'moreInfo' => "",
+    ),
 );

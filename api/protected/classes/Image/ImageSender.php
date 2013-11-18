@@ -2,21 +2,21 @@
 
 class Image_ImageSender {
 
-  protected $fimage;
+  protected $oimage;
 
-  public function __construct(Image_FilteredImage $fimage) {
-    $this->fimage = $fimage;
+  public function __construct(Image_OutgoingImage $fimage) {
+    $this->oimage = $fimage;
   }
 
   public function send() {
     if (!headers_sent()) {
-      $type = $this->fimage->getFileMimeType();
-      $size = $this->fimage->getFileSize();
+      $type = $this->oimage->getFileMimeType();
+      $size = $this->oimage->getFileSize();
       if ($type && $size) {
         header(Http_HttpCode::getMessage(200));
         header('Content-Type: ' . $type);
         header('Content-Length: ' . $size);
-        readfile($this->fimage->getFileLocation());
+        readfile($this->oimage->getFileLocation());
       }
     }
   }

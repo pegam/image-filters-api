@@ -1,6 +1,6 @@
 <?php
 
-class Image_FilteredImage {
+class Image_OutgoingImage {
 
   private $dimage;
   protected $fileLoc;

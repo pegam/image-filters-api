@@ -5,8 +5,8 @@ class Image_Filter_Pixelate extends Image_Filter_Filter {
   const MIN_SIZE = 1;
   protected $size;
 
-  public function __construct($dimage, $args) {
-    parent::__construct($dimage, $args);
+  public function __construct($dimage, $image_obj, $args) {
+    parent::__construct($dimage, $image_obj, $args);
     $this->filter = IMG_FILTER_PIXELATE;
     if (!isset($this->size)) {
       throw new HttpException(400, 19);
@@ -21,14 +21,7 @@ class Image_Filter_Pixelate extends Image_Filter_Filter {
   }
 
   public function apply() {
-    # apply filter
     Image_Filter_Pixelate::pixelate($this->im, $this->size);
-
-    # create resulting image object
-    $funcName = "image" . $this->dimage->getReturnImageType();
-    if (!$funcName($this->im, $this->dimage->getReturnFileLocation())) {
-      throw new HttpException(500);
-    }
   }
 
   public static function pixelate(&$im, $pix_size) {

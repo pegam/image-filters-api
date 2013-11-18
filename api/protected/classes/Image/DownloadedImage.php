@@ -72,11 +72,6 @@ class Image_DownloadedImage {
         throw new HttpException(400, 14);
       }
       $this->returnImageType = $out;
-//      if (in_array($_GET['out'], Api::app()->awailableImageFormats)) {
-//        $this->returnImageType = image_type_to_extension(array_search($_GET['out'], Api::app()->awailableImageFormats), false);
-//      } else {
-//        throw new HttpException(400, 14);
-//      }
     }
     $pattern = '/\.' . $this->origImageType . '$/i';
     if ($this->origImageType === 'jpeg') {
@@ -171,6 +166,10 @@ class Image_DownloadedImage {
 
   public function getReturnFileLocation() {
     return isset($this->returnFileLoc) ? $this->returnFileLoc : null;
+  }
+
+  public function getOrigImageInfo() {
+    return $this->localImageSize;
   }
 
 }
