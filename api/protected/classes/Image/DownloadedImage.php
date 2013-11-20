@@ -45,6 +45,9 @@ class Image_DownloadedImage {
       throw new HttpException(400, 10);
     }
     $filesArrElement = reset($_FILES);
+    if (!$filesArrElement['tmp_name']) {
+      throw new HttpException(400, 10);
+    }
     $this->origFilename = $filesArrElement['name'];
     $this->localFileLoc = $this->tempDir . '/' . basename($filesArrElement['tmp_name']);
     if (!rename($filesArrElement['tmp_name'], $this->localFileLoc)) {
@@ -84,6 +87,7 @@ class Image_DownloadedImage {
 
   protected function initTempDir() {
     $this->tempDir = sys_get_temp_dir() . '/imagefilters.' . getmypid() . uniqid('.', true);
+//    $this->tempDir = $_SERVER['DOCUMENT_ROOT'] . '/temporary' . '/imagefilters.' . getmypid() . uniqid('.', true);
     if (file_exists($this->tempDir)) {
       throw new HttpException(500);
     }

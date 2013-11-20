@@ -1,6 +1,6 @@
 <?php
 
-class AImageCopy extends Image_ImageModelDest {
+abstract class AImageCopy extends Image_ImageModelDest {
 
   const HORIZONTAL = 1;
   const VERTICAL = 2;
