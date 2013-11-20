@@ -79,7 +79,27 @@ return array(
         'moreInfo' => "",
     ),
     20 => array(
-        'message'  => "Image '{action}' is missing argument or wrong value for argument.",
+        'message'  => "Image 'resize' is missing argument or wrong value for argument.",
+        'moreInfo' => "",
+    ),
+    21 => array(
+        'message'  => "Image 'crop' is missing argument or wrong value for argument.",
+        'moreInfo' => "",
+    ),
+    22 => array(
+        'message'  => "Image 'crop' - hsize and/or vsize out of bounds.",
+        'moreInfo' => "",
+    ),
+    23 => array(
+        'message'  => "Image 'fitin' is missing argument or wrong value for argument.",
+        'moreInfo' => "",
+    ),
+    24 => array(
+        'message'  => "Image 'flip' is missing argument or wrong value for argument.",
+        'moreInfo' => "",
+    ),
+    25 => array(
+        'message'  => "Image 'rotate' is missing argument or wrong value for argument.",
         'moreInfo' => "",
     ),
 );
