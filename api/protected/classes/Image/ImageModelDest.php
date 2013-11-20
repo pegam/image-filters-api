@@ -13,8 +13,6 @@ abstract class Image_ImageModelDest extends Image_ImageModel {
     parent::__destruct();
   }
 
-  abstract public function apply();
-
   public function save() {
     # create resulting image object
     $funcName = "image" . $this->dimage->getReturnImageType();
