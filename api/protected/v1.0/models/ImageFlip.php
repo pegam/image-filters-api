@@ -6,8 +6,9 @@ class ImageFlip extends AImageCopy {
   const FLIP_VERTICAL = 'vertical';
   const FLIP_BOTH = 'both';
 
-  public function __construct(Image_DownloadedImage $dimage, $direction, $resample = false) {
-    parent::__construct($dimage, 0, 0, $hsize, $vsize, $resample);
+  public function __construct(Image_DownloadedImage $dimage, $direction) {
+    $imgInfo = $dimage->getOrigImageInfo();
+    parent::__construct($dimage, 0, 0, (int) $imgInfo[0], (int) $imgInfo[1]);
     switch ($direction) {
       case ImageFlip::FLIP_HORIZONTAL:
         $this->orig_xpoint = $this->orig_hsize - 1;

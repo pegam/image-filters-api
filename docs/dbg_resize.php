@@ -1,7 +1,5 @@
 <?php
-$base_url = 'http://api.imagefilters.com';
-//$base_url = 'http://api-imagefilters.byethost31.com';
-$version = 'v1.0';
+require 'dbg_url.php';
 ?><html>
   <head>
     <link href="css/dbg.css" rel="stylesheet" type="text/css" />

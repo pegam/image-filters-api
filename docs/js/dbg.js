@@ -19,6 +19,9 @@ jQuery(document).ready(function($) {
     form.find('input[type=checkbox]').each(function() {
       form_action += '&' + $(this).attr('class') + '=' + this.checked;
     });
+    form.find('select').each(function() {
+      form_action += '&' + $(this).attr('class') + '=' + $(this).children('option:selected').val();
+    });
     form.attr('action', form_action);
     form.submit();
   });

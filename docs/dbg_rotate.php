@@ -1,7 +1,5 @@
 <?php
-$base_url = 'http://api.imagefilters.com';
-//$base_url = 'http://api-imagefilters.byethost31.com';
-$version = 'v1.0';
+require 'dbg_url.php';
 ?><html>
   <head>
     <link href="css/dbg.css" rel="stylesheet" type="text/css" />
@@ -33,9 +31,6 @@ $version = 'v1.0';
       Background - Alpha Component:
       <input class="bgalpha" type="text" />
       (0 - 127)
-      <br />
-      Resample:
-      <input class="resample" type="checkbox" />
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
