@@ -27,4 +27,17 @@ class ImageFlip extends AImageCopy {
     }
   }
 
+  public function apply() {
+    if (!imagealphablending($this->dest_image_obj, false)) {
+      throw new HttpException(500);
+    }
+    if (!imagesavealpha($this->dest_image_obj, true)) {
+      throw new HttpException(500);
+    }
+    if (!imagecopyresampled($this->dest_image_obj, $this->image_obj, 0, 0, $this->orig_xpoint, $this->orig_ypoint, $this->new_hsize, $this->new_vsize, $this->orig_hsize, $this->orig_vsize)) {
+      throw new HttpException(500);
+    }
+    $this->save();
+  }
+
 }

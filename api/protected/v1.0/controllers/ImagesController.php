@@ -147,30 +147,30 @@ class ImagesController extends Controller {
     if (!isset($rotateArgs['angle']) || !is_numeric($rotateArgs['angle'])) {
       throw new HttpException(400, 25);
     }
-    $angle = $rotateArgs['angle'];
+    $angle = (float) $rotateArgs['angle'];
     $bgred = ImageRotate::COLOR_MIN;
     $bggreen = ImageRotate::COLOR_MIN;
     $bgblue = ImageRotate::COLOR_MIN;
     $bgalpha = ImageRotate::ALPHA_MAX;
-    if (isset($rotateArgs['bgred'])) {
+    if (isset($rotateArgs['bgred']) && is_numeric($rotateArgs['bgred'])) {
       $bgred = (int) $rotateArgs['bgred'];
       if ($bgred < ImageRotate::COLOR_MIN || $bgred > ImageRotate::COLOR_MAX) {
         throw new HttpException(400, 25);
       }
     }
-    if (isset($rotateArgs['bggreen'])) {
+    if (isset($rotateArgs['bggreen']) && is_numeric($rotateArgs['bggreen'])) {
       $bggreen = (int) $rotateArgs['bggreen'];
       if ($bggreen < ImageRotate::COLOR_MIN || $bggreen > ImageRotate::COLOR_MAX) {
         throw new HttpException(400, 25);
       }
     }
-    if (isset($rotateArgs['bgblue'])) {
+    if (isset($rotateArgs['bgblue']) && is_numeric($rotateArgs['bgblue'])) {
       $bgblue = (int) $rotateArgs['bgblue'];
       if ($bgblue < ImageRotate::COLOR_MIN || $bgblue > ImageRotate::COLOR_MAX) {
         throw new HttpException(400, 25);
       }
     }
-    if (isset($rotateArgs['bgalpha'])) {
+    if (isset($rotateArgs['bgalpha']) && is_numeric($rotateArgs['bgalpha'])) {
       $bgalpha = (int) $rotateArgs['bgalpha'];
       if ($bgalpha < ImageRotate::ALPHA_MIN || $bgalpha > ImageRotate::ALPHA_MAX) {
         throw new HttpException(400, 25);

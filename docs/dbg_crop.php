@@ -20,6 +20,8 @@ require 'dbg_url.php';
       <input class="ypoint" type="text" />
       (min: 0)
       <br />
+      (The coordinates refer to the upper left corner.)
+      <br />
       New Horizontal Size:
       <input class="hsize" type="text" />
       (min: 1)

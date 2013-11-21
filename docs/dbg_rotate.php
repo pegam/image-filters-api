@@ -12,7 +12,7 @@ require 'dbg_url.php';
       ROTATE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
-      Angle:
+      Angle (anticlockwise):
       <input class="angle" type="text" />
       (float)
       <br />

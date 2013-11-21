@@ -15,7 +15,9 @@ class ImageRotate extends Image_ImageModelDest {
   protected $dest_image_obj;
 
   public function __construct(Image_DownloadedImage $dimage, $angle, $bgred, $bggreen, $bgblue, $bgalpha) {
-    $this->angle = $angle % 360;
+    parent::__construct($dimage);
+
+    $this->angle = fmod($angle, 360);
     $this->bgred = $bgred;
     $this->bggreen = $bggreen;
     $this->bgblue = $bgblue;
@@ -23,9 +25,6 @@ class ImageRotate extends Image_ImageModelDest {
   }
 
   public function apply() {
-    if (!imagealphablending($this->dest_image_obj, false)) {
-      throw new HttpException(500);
-    }
     $this->dest_image_obj = imagerotate($this->image_obj,
                                         $this->angle,
                                         imagecolorallocatealpha($this->image_obj,
@@ -33,6 +32,9 @@ class ImageRotate extends Image_ImageModelDest {
                                                                 $this->bggreen,
                                                                 $this->bgblue,
                                                                 $this->bgalpha));
+    if (!imagealphablending($this->dest_image_obj, false)) {
+      throw new HttpException(500);
+    }
     if (!imagesavealpha($this->dest_image_obj, true)) {
       throw new HttpException(500);
     }

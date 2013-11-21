@@ -8,7 +8,7 @@ class Application implements Interface_IRunnable {
         'class' => 'ErrorHandler',
       ),
       'request' => array(
-        'class' => 'HttpRequest',
+        'class' => 'ApiHttpRequest',
       ),
   );
 

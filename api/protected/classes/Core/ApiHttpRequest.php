@@ -1,6 +1,6 @@
 <?php
 
-class HttpRequest implements Interface_ICoreComponent {
+class ApiHttpRequest implements Interface_ICoreComponent {
 
   const VERSION_PATTERN = '/^v[\d]+\.\d+$/';
 
@@ -43,7 +43,7 @@ class HttpRequest implements Interface_ICoreComponent {
       Api::redirect(Api::app()->redirectUrl);
     }
     $this->version = strtolower(trim($parts[0]));
-    if (!preg_match(HttpRequest::VERSION_PATTERN, $this->version)) {
+    if (!preg_match(ApiHttpRequest::VERSION_PATTERN, $this->version)) {
       throw new HttpException(400, 2);
     }
     # controller
