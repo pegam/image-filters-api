@@ -31,6 +31,7 @@ require 'dbg_url.php';
       Background - Alpha Component:
       <input class="bgalpha" type="text" />
       (0 - 127)
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>

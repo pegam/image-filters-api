@@ -18,6 +18,7 @@ require 'dbg_url.php';
         <option value="vertical">Vertical</option>
         <option value="both">Both</option>
       </select>
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>

@@ -14,13 +14,28 @@ jQuery(document).ready(function($) {
     var form = $(this).closest('form');
     var form_action = form.attr('action');
     form.find('input[type=text]').each(function() {
-      form_action += '&' + $(this).attr('class') + '=' + $(this).val();
+      if ($(this).val()) {
+        if (form_action.slice(-1) !== '?') {
+          form_action += '&';
+        }
+        form_action += $(this).attr('class') + '=' + $(this).val();
+      }
     });
     form.find('input[type=checkbox]').each(function() {
-      form_action += '&' + $(this).attr('class') + '=' + this.checked;
+      if (this.checked) {
+        if (form_action.slice(-1) !== '?') {
+          form_action += '&';
+        }
+        form_action += $(this).attr('class') + '=' + this.checked;
+      }
     });
     form.find('select').each(function() {
-      form_action += '&' + $(this).attr('class') + '=' + $(this).children('option:selected').val();
+      if ($(this).children('option:selected').val()) {
+        if (form_action.slice(-1) !== '?') {
+          form_action += '&';
+        }
+        form_action += $(this).attr('class') + '=' + $(this).children('option:selected').val();
+      }
     });
     form.attr('action', form_action);
     form.submit();

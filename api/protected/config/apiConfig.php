@@ -3,8 +3,8 @@
 return array(
     'httpCodesConfLoc'          => BASE_PATH . '/protected/config/httpCodes.php',
     'apiErrCodesConfLoc'        => BASE_PATH . '/protected/config/apiErrCodes.php',
-    'redirectUrl'               => 'http://developers.imagefilters.com/',
-//    'redirectUrl'               => 'http://developersimagefilters.awardspace.info/',
+    'redirectUrl_development'   => 'http://developers.imagefilters.com/',
+    'redirectUrl_production'    => 'http://developersimagefilters.awardspace.info/',
     'allowedHttpRequestMethods' => array('GET', 'POST', 'PUT', 'DELETE'),
     'awailableImageFormats'     => array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG),
     'awailableImageFilters'     => array(

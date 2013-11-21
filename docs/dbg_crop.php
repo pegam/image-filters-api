@@ -29,6 +29,7 @@ require 'dbg_url.php';
       New Vertical Size:
       <input class="vsize" type="text" />
       (min: 1)
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>

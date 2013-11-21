@@ -85,6 +85,12 @@ class Application implements Interface_IRunnable {
         $this->$key = $value;
       }
     }
+    $env_file = $_SERVER['DOCUMENT_ROOT'] . '/protected/environment';
+    if (file_exists($env_file) && trim(file_get_contents($env_file)) === 'production') {
+      $this->environment = 'production';
+    } else {
+      $this->environment = 'development';
+    }
   }
 
   public function registerCoreComponents() {

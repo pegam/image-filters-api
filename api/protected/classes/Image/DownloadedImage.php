@@ -86,8 +86,11 @@ class Image_DownloadedImage {
   }
 
   protected function initTempDir() {
-    $this->tempDir = sys_get_temp_dir() . '/imagefilters.' . getmypid() . uniqid('.', true);
-//    $this->tempDir = $_SERVER['DOCUMENT_ROOT'] . '/temporary' . '/imagefilters.' . getmypid() . uniqid('.', true);
+    if (Api::app()->environment === 'production') {
+      $this->tempDir = $_SERVER['DOCUMENT_ROOT'] . '/temporary' . '/imagefilters.' . getmypid() . uniqid('.', true);
+    } else {
+      $this->tempDir = sys_get_temp_dir() . '/imagefilters.' . getmypid() . uniqid('.', true);
+    }
     if (file_exists($this->tempDir)) {
       throw new HttpException(500);
     }

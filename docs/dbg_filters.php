@@ -26,32 +26,36 @@ require 'dbg_url.php';
     <form id="if_negate" class="show" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=negate" method="POST">
       NEGATE<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_grayscale" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=grayscale&out=png" method="POST">
+    <form id="if_grayscale" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=grayscale" method="POST">
       GRAYSCALE<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_brightness" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=brightness&out=gif" method="POST">
+    <form id="if_brightness" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=brightness" method="POST">
       BRIGHTNESS<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       Level:
       <input class="level" type="text" />
       (min: -255, max: 255)
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_contrast" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=contrast&out=jpeg" method="POST">
+    <form id="if_contrast" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=contrast" method="POST">
       CONTRAST<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       Level:
       <input class="level" type="text" />
       (min: 100, max: -100)
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
@@ -80,55 +84,64 @@ require 'dbg_url.php';
           <td>(min: 0, max: 127)</td>
         </tr>
       </table>
+      <?php include 'dbg_output_formats.php' ;?>
+      <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_edgedetect" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=edgedetect&out=png" method="POST">
+    <form id="if_edgedetect" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=edgedetect" method="POST">
       EDGE DETECT<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_emboss" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=emboss&out=gif" method="POST">
+    <form id="if_emboss" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=emboss" method="POST">
       EMBOSS<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_gaussianblur" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=gaussianblur&out=jpg" method="POST">
+    <form id="if_gaussianblur" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=gaussianblur" method="POST">
       GAUSSIAN BLUR<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
     <form id="if_selectiveblur" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=selectiveblur" method="POST">
       SELECTIVE BLUR<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_meanremoval" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=meanremoval&out=png" method="POST">
+    <form id="if_meanremoval" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=meanremoval" method="POST">
       MEAN REMOVAL<br /><br />
       Send this file: <input name="userfile" type="file" />
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_smooth" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=smooth&out=gif" method="POST">
+    <form id="if_smooth" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=smooth" method="POST">
       SMOOTH<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       Level:
       <input class="level" type="text" />
       (any float is accepted, large value = no change (recommended range: -10 ... 10))
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>
-    <form id="if_pixelate" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=pixelate&out=jpeg" method="POST">
+    <form id="if_pixelate" class="hide" enctype="multipart/form-data" action="<?php echo $base_url; ?>/<?php echo $version; ?>/images/filter?name=pixelate" method="POST">
       PIXELATE<br /><br />
       Send this file: <input name="userfile" type="file" />
       <br />
       Size:
       <input class="size" type="text" />
       (min: 1)
+      <?php include 'dbg_output_formats.php' ;?>
       <br />
       <input type="button" class="submit" value="Send File" />
     </form>

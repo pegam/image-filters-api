@@ -35,12 +35,14 @@ class ApiHttpRequest implements Interface_ICoreComponent {
     }
     $this->pathInfo = trim($pathInfo, '/');
     if (strlen(trim($this->pathInfo)) == 0) {
-      Api::redirect(Api::app()->redirectUrl);
+      $redirectUrl = 'redirectUrl_' . Api::app()->environment;
+      Api::redirect(Api::app()->$redirectUrl);
     }
     # version
     $parts = explode('/', $this->pathInfo);
     if (!isset($parts[0]) || preg_match('/index\\.(php)|(html?)/i', $parts[0])) {
-      Api::redirect(Api::app()->redirectUrl);
+      $redirectUrl = 'redirectUrl_' . Api::app()->environment;
+      Api::redirect(Api::app()->$redirectUrl);
     }
     $this->version = strtolower(trim($parts[0]));
     if (!preg_match(ApiHttpRequest::VERSION_PATTERN, $this->version)) {
