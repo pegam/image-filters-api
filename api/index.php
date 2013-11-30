@@ -2,6 +2,8 @@
 
 header("HTTP/1.1 500 Internal Server Error");
 
+date_default_timezone_set('Europe/Berlin');
+
 ob_start();
 require_once dirname(__FILE__) . '/protected/classes/Api.php';
 
@@ -10,7 +12,6 @@ $config = BASE_PATH . '/protected/config/apiConfig.php';
 
 try {
   Api::createApplication($config);
-  Api::app()->setTimezone('Europe/Berlin');
   Api::app()->run();
   if (ob_get_length()) {
     ob_end_flush();

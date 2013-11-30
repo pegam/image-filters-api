@@ -1,10 +1,11 @@
 <?php
 
 return array(
+    'ssl' => false,
     'httpCodesConfLoc'          => BASE_PATH . '/protected/config/httpCodes.php',
     'apiErrCodesConfLoc'        => BASE_PATH . '/protected/config/apiErrCodes.php',
-    'redirectUrl_development'   => 'http://developers.imagefilters.com/',
-    'redirectUrl_production'    => 'http://developersimagefilters.awardspace.info/',
+    'redirectUrl{{environment:development}}'   => 'http://developers.imagefilters.com/',
+    'redirectUrl{{environment:production}}'    => 'http://developersimagefilters.awardspace.info/',
     'allowedHttpRequestMethods' => array('GET', 'POST', 'PUT', 'DELETE'),
     'awailableImageFormats'     => array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG),
     'awailableImageFilters'     => array(
@@ -21,7 +22,7 @@ return array(
         IMG_FILTER_SMOOTH         => 'smooth',
         IMG_FILTER_PIXELATE       => 'pixelate',
     ),
-    'debug' => true
+    'debug' => false,
 //    'uploadedImgMaxSize'          => 10240, // php.ini - upload_max_filesize i post_max_size
 );
 

@@ -22,7 +22,7 @@ class ErrorHandler implements Interface_ICoreComponent {
         case 303:
         case 303:
         case 307:
-          header("Location: " . Api::app()->redirectUrl . '_' . Api::app()->environment);
+          header("Location: " . Api::app()->redirectUrl);
           break;
       }
     }

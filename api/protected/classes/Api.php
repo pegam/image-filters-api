@@ -37,6 +37,7 @@ class Api {
   }
 
   public static function autoload($className) {
+    $className = str_replace("_", "/", $className);
     $basePath = dirname(__FILE__);
     $path = $basePath . '/Core/' . $className . '.php';
     if (file_exists($path)) {
@@ -46,7 +47,7 @@ class Api {
       if (file_exists($path)) {
         require_once $path;
       } else {
-        $path = $basePath . '/' . str_replace("_", "/", $className) . '.php';
+        $path = $basePath . '/' . $className . '.php';
         if (file_exists($path)) {
           require_once $path;
         }

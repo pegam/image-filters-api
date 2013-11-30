@@ -5,7 +5,9 @@ class Api_ApiErrorCode {
   private static $errCodes;
 
   public static function getMessage($code) {
-    if (!isset(Api_ApiErrorCode::$errCodes)) {
+    if (!isset(Api_ApiErrorCode::$errCodes)
+            && isset(Api::app()->apiErrCodesConfLoc)
+            && is_readable(Api::app()->apiErrCodesConfLoc)) {
       Api_ApiErrorCode::$errCodes = require Api::app()->apiErrCodesConfLoc;
     }
     $msgArr = Api_ApiErrorCode::$errCodes[$code];

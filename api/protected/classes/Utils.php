@@ -15,4 +15,9 @@ class Utils {
     rmdir($dir);
   }
 
+  public static function stringEndsWith($str, $end) {
+    $l = strlen($end);
+    return $end === substr($str, -$l);
+  }
+
 }

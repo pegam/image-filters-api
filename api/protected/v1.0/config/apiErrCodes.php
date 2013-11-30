@@ -102,8 +102,4 @@ return array(
         'message'  => "Image 'rotate' is missing argument or wrong value for argument.",
         'moreInfo' => "",
     ),
-    26 => array(
-        'message'  => "Requests must be issued over SSL.",
-        'moreInfo' => "",
-    ),
 );

@@ -2,6 +2,7 @@
 
 class Application implements Interface_IRunnable {
 
+  public $environment = 'development';
   protected $components = array();
   protected $componentConfig = array(
       'errorHandler' => array(
@@ -12,15 +13,16 @@ class Application implements Interface_IRunnable {
       ),
   );
 
-  public function __construct($config = null) {
+  public function __construct($config_loc = null) {
     Api::setApplication($this);
 
     set_exception_handler(array($this, 'handleException'));
 
-    if (is_string($config)) {
-      $config = require($config);
-    }
-    $this->parseConfig($config);
+    $this->setEnv();
+
+    $config_obj = new Config($config_loc);
+    $config_arr = $config_obj->parseConfig();
+    $this->addConfig($config_arr);
 
     $this->registerCoreComponents();
   }
@@ -72,24 +74,27 @@ class Application implements Interface_IRunnable {
     if (isset($this->components[$id])) {
       return $this->components[$id];
     } else if (isset($this->componentConfig[$id]) && $createIfNull) {
-      $config = $this->componentConfig[$id];
-      $component = Api::createComponent($config);
+      $comp_config = $this->componentConfig[$id];
+      $component = Api::createComponent($comp_config);
       $component->init();
       return $this->components[$id] = $component;
     }
   }
 
-  public function parseConfig($config) {
-    if (is_array($config)) {
-      foreach ($config as $key => $value) {
-        $this->$key = $value;
-      }
-    }
+  public function setEnv() {
     $env_file = $_SERVER['DOCUMENT_ROOT'] . '/protected/environment';
     if (file_exists($env_file) && trim(file_get_contents($env_file)) === 'production') {
       $this->environment = 'production';
     } else {
       $this->environment = 'development';
+    }
+  }
+
+  public function addConfig($config = null) {
+    if (is_array($config)) {
+      foreach ($config as $key => $value) {
+        $this->$key = $value;
+      }
     }
   }
 
@@ -110,7 +115,15 @@ class Application implements Interface_IRunnable {
   }
 
   public function run() {
+    $this->addVersionConfig();
     $this->processRequest();
+  }
+
+  public function addVersionConfig() {
+    $config_loc = BASE_PATH . '/protected/' . $this->request->getApiVersion() . '/config/apiConfig.php';
+    $config_obj = new Config($config_loc);
+    $config_arr = $config_obj->parseConfig();
+    $this->addConfig($config_arr);
   }
 
   public function processRequest() {
@@ -125,6 +138,7 @@ class Application implements Interface_IRunnable {
       throw new HttpException(400, 4);
     }
     $controller->init();
+    $controller->auth();
     $controller->run();
   }
 
@@ -132,7 +146,7 @@ class Application implements Interface_IRunnable {
     $versionDir = $this->getVersionDir($version);
     $className = ucfirst($controllerId) . 'Controller';
     $classFile = $versionDir . '/controllers/' . $className . '.php';
-    if (is_file($classFile)) {
+    if (is_readable($classFile)) {
       if (!class_exists($className, false)) {
         require($classFile);
       }

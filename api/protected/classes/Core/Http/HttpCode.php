@@ -5,7 +5,9 @@ class Http_HttpCode {
   private static $httpCodes;
 
   public static function getMessage($code, $full = true) {
-    if (!isset(Http_HttpCode::$httpCodes)) {
+    if (!isset(Http_HttpCode::$httpCodes)
+            && isset(Api::app()->httpCodesConfLoc)
+            && is_readable(Api::app()->httpCodesConfLoc)) {
       Http_HttpCode::$httpCodes = require Api::app()->httpCodesConfLoc;
     }
     if ($full) {

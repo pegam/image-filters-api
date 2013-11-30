@@ -11,6 +11,14 @@ class ApiHttpRequest implements Interface_ICoreComponent {
   protected $actionId;
 
   public function init() {
+    # SSL
+    if (Api::app()->ssl) {
+      if (!empty($_SERVER['HTTPS'])
+              && strtolower($_SERVER['HTTPS']) !== 'off'
+              || $_SERVER['SERVER_PORT'] == 443) {
+          throw new HttpException(400, 26);
+      }
+    }
     # method
     if (isset($_SERVER['REQUEST_METHOD'])) {
       $this->method = strtoupper($_SERVER['REQUEST_METHOD']);
@@ -35,13 +43,13 @@ class ApiHttpRequest implements Interface_ICoreComponent {
     }
     $this->pathInfo = trim($pathInfo, '/');
     if (strlen(trim($this->pathInfo)) == 0) {
-      $redirectUrl = 'redirectUrl_' . Api::app()->environment;
+      $redirectUrl = 'redirectUrl';
       Api::redirect(Api::app()->$redirectUrl);
     }
     # version
     $parts = explode('/', $this->pathInfo);
     if (!isset($parts[0]) || preg_match('/index\\.(php)|(html?)/i', $parts[0])) {
-      $redirectUrl = 'redirectUrl_' . Api::app()->environment;
+      $redirectUrl = 'redirectUrl';
       Api::redirect(Api::app()->$redirectUrl);
     }
     $this->version = strtolower(trim($parts[0]));
