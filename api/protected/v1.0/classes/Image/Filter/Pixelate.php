@@ -5,8 +5,8 @@ class Image_Filter_Pixelate extends Image_Filter_Filter {
   const MIN_SIZE = 1;
   protected $size;
 
-  public function __construct($dimage, $image_obj, $args) {
-    parent::__construct($dimage, $image_obj, $args);
+  public function __construct($dimage, $imageObj, $args) {
+    parent::__construct($dimage, $imageObj, $args);
     $this->filter = IMG_FILTER_PIXELATE;
     if (!isset($this->size)) {
       throw new HttpException(400, 19);
@@ -24,14 +24,14 @@ class Image_Filter_Pixelate extends Image_Filter_Filter {
     Image_Filter_Pixelate::pixelate($this->im, $this->size);
   }
 
-  public static function pixelate(&$im, $pix_size) {
+  public static function pixelate(&$im, $pixSize) {
     $width = imagesx($im);
     $height = imagesy($im);
-    for ($x = 0; $x < $width; $x += $pix_size + 1) {
-      for ($y = 0; $y < $height; $y += $pix_size + 1) {
+    for ($x = 0; $x < $width; $x += $pixSize + 1) {
+      for ($y = 0; $y < $height; $y += $pixSize + 1) {
         $rgb = imagecolorsforindex($im, imagecolorat($im, $x, $y));
         $color = imagecolorclosest($im, $rgb['red'], $rgb['green'], $rgb['blue']);
-        imagefilledrectangle($im, $x, $y, $x + $pix_size, $y + $pix_size, $color);
+        imagefilledrectangle($im, $x, $y, $x + $pixSize, $y + $pixSize, $color);
       }
     }
   }

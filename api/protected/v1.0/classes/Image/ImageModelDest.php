@@ -3,12 +3,12 @@
 abstract class Image_ImageModelDest extends Image_ImageModel {
 
   protected $dimage;
-  protected $image_obj;
-  protected $dest_image_obj;
+  protected $imageObj;
+  protected $destImageObj;
 
   public function __destruct() {
-    if ($this->dest_image_obj) {
-      imagedestroy($this->dest_image_obj);
+    if ($this->destImageObj) {
+      imagedestroy($this->destImageObj);
     }
     parent::__destruct();
   }
@@ -16,7 +16,7 @@ abstract class Image_ImageModelDest extends Image_ImageModel {
   public function save() {
     # create resulting image object
     $funcName = "image" . $this->dimage->getReturnImageType();
-    if (!$funcName($this->dest_image_obj, $this->dimage->getReturnFileLocation())) {
+    if (!$funcName($this->destImageObj, $this->dimage->getReturnFileLocation())) {
       throw new HttpException(500);
     }
   }

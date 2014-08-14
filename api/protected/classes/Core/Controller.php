@@ -7,7 +7,9 @@ class Controller implements Interface_IController, Interface_ICoreComponent, Int
   }
 
   public function auth() {
-    $auth = new ApiKeyAuth($clientId, $signature);
+    $pathQuery = Api::app()->request->getPathQuery();
+    $auth = new ApiKeyAuth($pathQuery['client']);
+    $auth->check();
   }
 
   public function run() {
@@ -17,16 +19,14 @@ class Controller implements Interface_IController, Interface_ICoreComponent, Int
     }
 
     $this->checkParams();
-    $this->checkHttpMethod();
+    $this->checkHttpMethod($action);
 
     $this->$action();
   }
 
-  public function checkParams() {
+  public function checkParams() {}
 
-  }
-
-  public function checkHttpMethod() {
+  public function checkHttpMethod($action) {
     $allowedHttpMethods = $this->getAllowedHttpMethods($action);
     if ($allowedHttpMethods !== null && !in_array(Api::app()->request->getHttpMethod(), $allowedHttpMethods)) {
       throw new HttpException(400, 7);
@@ -43,7 +43,7 @@ class Controller implements Interface_IController, Interface_ICoreComponent, Int
     return null;
   }
 
-  private function parseDocComment($method) {
+  public function parseDocComment(ReflectionMethod $method) {
     $httpMethods = array();
     $comments = $method->getDocComment();
     foreach (explode("\n", $comments) as $comment) {

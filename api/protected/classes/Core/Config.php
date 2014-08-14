@@ -2,38 +2,38 @@
 
 class Config {
 
-  protected $config_loc;
-  protected $config_arr_raw;
-  protected $config_arr;
+  protected $configLoc;
+  protected $configArrRaw;
+  protected $configArr;
 
-  public function __construct($conf_file) {
-    $this->config_loc = $conf_file;
-    if (is_readable($this->config_loc)) {
-      $this->config_arr_raw = require($this->config_loc);
+  public function __construct($confFile) {
+    $this->configLoc = $confFile;
+    if (is_readable($this->configLoc)) {
+      $this->configArrRaw = require($this->configLoc);
     }
   }
 
   public function parseConfig() {
-    if (is_array($this->config_arr_raw)) {
-      foreach ($this->config_arr_raw as $key => $val) {
+    if (is_array($this->configArrRaw)) {
+      foreach ($this->configArrRaw as $key => $val) {
         $key = $this->replaceVariable($key);
         if ($key) {
-          $this->config_arr[$key] = $val;
+          $this->configArr[$key] = $val;
         }
       }
     }
-    return $this->config_arr;
+    return $this->configArr;
   }
 
   public function getConfig() {
-    return $this->config_arr;
+    return $this->configArr;
   }
 
   protected function replaceVariable($key) {
     $var = $this->hasVariable($key);
     if ($var) {
-      $var_name = $var[1];
-      if (isset(Api::app()->$var_name) && Api::app()->$var_name === $var[2]) {
+      $varName = $var[1];
+      if (isset(Api::app()->$varName) && Api::app()->$varName === $var[2]) {
         return $var[0];
       }
       return null;
