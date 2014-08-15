@@ -24,7 +24,7 @@ class ApiKeyAuth {
       if (!$this->apiKey) {
         $this->apiKey = $this->fetchFromFile();
         if (!$this->apiKey) {
-          throw new Exception();
+          throw new ApiException();
         }
       }
     }
@@ -39,7 +39,7 @@ class ApiKeyAuth {
     $ret = null;
     $f = fopen(Api::app()->apiKeysFile, 'r');
     if (!$f) {
-      throw new Exception();
+      throw new ApiException();
     }
     while (!feof($f)) {
       $line = trim(fgets($f));

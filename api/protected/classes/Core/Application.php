@@ -41,7 +41,7 @@ class Application implements Interface_IRunnable {
     if ($this->hasComponent($name)) {
       return $this->getComponent($name);
     }
-    throw new Exception();
+    throw new ApiException();
   }
 
   public function __isset($name) {

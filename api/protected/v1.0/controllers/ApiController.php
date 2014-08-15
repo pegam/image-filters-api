@@ -12,6 +12,11 @@ class ApiController extends Controller {
 //        return $this->parseDocComment($method);
 //      }
 //    }
+    $ret = array(
+        'resource' => array(
+            
+        )
+    );
     echo "YO!";
   }
 
