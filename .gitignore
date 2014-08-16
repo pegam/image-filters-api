@@ -1,3 +1,5 @@
 nbproject/
 www-logs/
-api/diffs.txt
+/api/diffs.txt
+/docs/vendor/
+/docs/twig_cache/

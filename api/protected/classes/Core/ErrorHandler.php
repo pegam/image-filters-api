@@ -18,8 +18,6 @@ class ErrorHandler implements Interface_ICoreComponent {
       header("HTTP/1.1 " . $exception->getHttpStatusCode() . " " . $exception->getMessage());
       switch ($exception->getHttpStatusCode()) {
         case 301:
-        case 302:
-        case 303:
         case 303:
         case 307:
           header("Location: " . Api::app()->redirectUrl);
