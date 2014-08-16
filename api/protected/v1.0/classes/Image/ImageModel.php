@@ -3,7 +3,7 @@
 abstract class Image_ImageModel extends Model {
 
   protected $dimage;
-  protected $image_obj;
+  protected $imageObj;
 
   public function __construct(Image_DownloadedImage $dimage) {
     $this->dimage = $dimage;

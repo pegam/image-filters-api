@@ -7,9 +7,9 @@ class Image_Filter_Filter {
   protected $filter;
   protected $args;
 
-  public function __construct($dimage, $image_obj, $args) {
+  public function __construct($dimage, $imageObj, $args) {
     $this->dimage = $dimage;
-    $this->im = $image_obj;
+    $this->im = $imageObj;
 
     foreach ($args as $name => $value) {
       if (property_exists($this, $name)) {

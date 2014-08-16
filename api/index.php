@@ -23,4 +23,5 @@ try {
     echo nl2br($e->getLine()) . "\n<br>\n";
     echo nl2br($e->getTraceAsString()) . "\n<br>\n";
   }
+  throw $e;
 }

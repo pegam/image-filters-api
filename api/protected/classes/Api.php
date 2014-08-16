@@ -16,7 +16,7 @@ class Api {
     if (Api::$app === null || $app === null) {
       Api::$app = $app;
     } else {
-      throw new ApiException('Aplikacija moze biti kreirana samo jedanput.');
+      throw new ApiException("There can be only one instance of the application.");
     }
   }
 
@@ -24,7 +24,7 @@ class Api {
     if (isset($config['class'])) {
       return new $config['class'];
     } else {
-      throw new CException('Konfiguracija komponente mora biti niz koji ima element \'class\'.');
+      throw new CException("Component configuration has to be array containing key 'class'.");
     }
   }
 

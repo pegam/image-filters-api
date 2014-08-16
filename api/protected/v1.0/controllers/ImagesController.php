@@ -134,7 +134,7 @@ class ImagesController extends Controller {
       throw new HttpException(400, 24);
     }
     $dimage = new Image_DownloadedImage();
-    $model = new ImageFlip($dimage, $direction, $resample);
+    $model = new ImageFlip($dimage, $direction);
     $model->apply();
     $model->output();
   }

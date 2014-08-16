@@ -106,4 +106,12 @@ return array(
         'message'  => "Requests must be issued over SSL.",
         'moreInfo' => "",
     ),
+    27 => array(
+        'message'  => "Wrong signature.",
+        'moreInfo' => "",
+    ),
+    28 => array(
+        'message'  => "Missing 'client' parameter.",
+        'moreInfo' => "",
+    ),
 );

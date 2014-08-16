@@ -5,12 +5,12 @@ abstract class AImageCopy extends Image_ImageModelDest {
   const HORIZONTAL = 1;
   const VERTICAL = 2;
 
-  protected $orig_xpoint;
-  protected $orig_ypoint;
-  protected $orig_hsize;
-  protected $orig_vsize;
-  protected $new_hsize;
-  protected $new_vsize;
+  protected $origXpoint;
+  protected $origYpoint;
+  protected $origHsize;
+  protected $origVsize;
+  protected $newHsize;
+  protected $newVsize;
   protected $resample;
 
   public function __construct(Image_DownloadedImage $dimage, $xpoint, $ypoint, $hsize, $vsize, $resample = false) {
@@ -19,23 +19,23 @@ abstract class AImageCopy extends Image_ImageModelDest {
       throw new HttpException(500);
     }
     $imgInfo = $dimage->getOrigImageInfo();
-    $this->orig_hsize = (int) $imgInfo[0];
-    $this->orig_vsize = (int) $imgInfo[1];
-    $this->orig_xpoint = $xpoint;
-    $this->orig_ypoint = $ypoint;
+    $this->origHsize = (int) $imgInfo[0];
+    $this->origVsize = (int) $imgInfo[1];
+    $this->origXpoint = $xpoint;
+    $this->origYpoint = $ypoint;
     if ($hsize) {
-      $this->new_hsize = $hsize;
+      $this->newHsize = $hsize;
     } else {
-      $this->new_hsize = $this->getSize($vsize, ImageResize::HORIZONTAL);
+      $this->newHsize = $this->getSize($vsize, ImageResize::HORIZONTAL);
     }
     if ($vsize) {
-      $this->new_vsize = $vsize;
+      $this->newVsize = $vsize;
     } else {
-      $this->new_vsize = $this->getSize($hsize, ImageResize::VERTICAL);
+      $this->newVsize = $this->getSize($hsize, ImageResize::VERTICAL);
     }
     $this->resample = $resample;
 
-    $this->dest_image_obj = imagecreatetruecolor($this->new_hsize, $this->new_vsize);
+    $this->dest_image_obj = imagecreatetruecolor($this->newHsize, $this->newVsize);
     if (!$this->dest_image_obj) {
       throw new HttpException(500);
     }
@@ -49,11 +49,11 @@ abstract class AImageCopy extends Image_ImageModelDest {
       throw new HttpException(500);
     }
     if ($this->resample) {
-      if (!imagecopyresampled($this->dest_image_obj, $this->image_obj, 0, 0, $this->orig_xpoint, $this->orig_ypoint, $this->new_hsize, $this->new_vsize, $this->orig_hsize, $this->orig_vsize)) {
+      if (!imagecopyresampled($this->dest_image_obj, $this->image_obj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
         throw new HttpException(500);
       }
     } else {
-      if (!imagecopyresized($this->dest_image_obj, $this->image_obj, 0, 0, $this->orig_xpoint, $this->orig_ypoint, $this->new_hsize, $this->new_vsize, $this->orig_hsize, $this->orig_vsize)) {
+      if (!imagecopyresized($this->dest_image_obj, $this->image_obj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
         throw new HttpException(500);
       }
     }
@@ -61,7 +61,7 @@ abstract class AImageCopy extends Image_ImageModelDest {
   }
 
   protected function getSize($size, $mode) {
-    $prop = $this->orig_hsize / $this->orig_vsize;
+    $prop = $this->origHsize / $this->origVsize;
     switch ($mode) {
       case ImageResize::HORIZONTAL:
         return (int) ($size * $prop);

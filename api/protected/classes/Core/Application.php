@@ -13,16 +13,16 @@ class Application implements Interface_IRunnable {
       ),
   );
 
-  public function __construct($config_loc = null) {
+  public function __construct($configLoc = null) {
     Api::setApplication($this);
 
     set_exception_handler(array($this, 'handleException'));
 
     $this->setEnv();
 
-    $config_obj = new Config($config_loc);
-    $config_arr = $config_obj->parseConfig();
-    $this->addConfig($config_arr);
+    $configObj = new Config($configLoc);
+    $configArr = $configObj->parseConfig();
+    $this->addConfig($configArr);
 
     $this->registerCoreComponents();
   }
@@ -41,12 +41,11 @@ class Application implements Interface_IRunnable {
     if ($this->hasComponent($name)) {
       return $this->getComponent($name);
     }
+    throw new ApiException();
   }
 
   public function __isset($name) {
-    if ($this->hasComponent($name)) {
-      return $this->getComponent($name) !== null;
-    }
+    return $this->hasComponent($name) && $this->getComponent($name) !== null;
   }
 
   public function handleException($exception) {
@@ -74,16 +73,16 @@ class Application implements Interface_IRunnable {
     if (isset($this->components[$id])) {
       return $this->components[$id];
     } else if (isset($this->componentConfig[$id]) && $createIfNull) {
-      $comp_config = $this->componentConfig[$id];
-      $component = Api::createComponent($comp_config);
+      $compConfig = $this->componentConfig[$id];
+      $component = Api::createComponent($compConfig);
       $component->init();
       return $this->components[$id] = $component;
     }
   }
 
   public function setEnv() {
-    $env_file = $_SERVER['DOCUMENT_ROOT'] . '/protected/environment';
-    if (file_exists($env_file) && trim(file_get_contents($env_file)) === 'production') {
+    $envFile = $_SERVER['DOCUMENT_ROOT'] . '/protected/environment';
+    if (file_exists($envFile) && trim(file_get_contents($envFile)) === 'production') {
       $this->environment = 'production';
     } else {
       $this->environment = 'development';
@@ -100,8 +99,8 @@ class Application implements Interface_IRunnable {
 
   public function registerCoreComponents() {
     if ($this->componentConfig) {
-      foreach (array_keys($this->componentConfig) as $comp_id) {
-        $this->getComponent($comp_id);
+      foreach (array_keys($this->componentConfig) as $compId) {
+        $this->getComponent($compId);
       }
     }
   }
@@ -120,10 +119,10 @@ class Application implements Interface_IRunnable {
   }
 
   public function addVersionConfig() {
-    $config_loc = BASE_PATH . '/protected/' . $this->request->getApiVersion() . '/config/apiConfig.php';
-    $config_obj = new Config($config_loc);
-    $config_arr = $config_obj->parseConfig();
-    $this->addConfig($config_arr);
+    $configLoc = BASE_PATH . '/protected/' . $this->request->getApiVersion() . '/config/apiConfig.php';
+    $configObj = new Config($configLoc);
+    $configArr = $configObj->parseConfig();
+    $this->addConfig($configArr);
   }
 
   public function processRequest() {

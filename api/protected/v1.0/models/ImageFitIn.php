@@ -11,12 +11,12 @@ class ImageFitIn extends AImageCopy {
     } else if (!$vsize) {
       parent::__construct($dimage, 0, 0, $hsize, null, $resample);
     } else {
-      $new_prop = $hsize / $vsize;
+      $newProp = $hsize / $vsize;
       $imgInfo = $dimage->getOrigImageInfo();
-      $orig_prop = ((int) $imgInfo[0])/ ((int) $imgInfo[1]);
-      if ($new_prop > $orig_prop) {
+      $origProp = ((int) $imgInfo[0])/ ((int) $imgInfo[1]);
+      if ($newProp > $origProp) {
         parent::__construct($dimage, 0, 0, null, $vsize, $resample);
-      } else if ($new_prop < $orig_prop) {
+      } else if ($newProp < $origProp) {
         parent::__construct($dimage, 0, 0, $hsize, null, $resample);
       } else {
         parent::__construct($dimage, 0, 0, $hsize, $vsize, $resample);
