@@ -1,7 +1,7 @@
 <?php
 
 class ApiKeyAuth {
-//proba
+
   protected $clientId;
   protected $apiKey;
 
