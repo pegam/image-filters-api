@@ -1,6 +1,6 @@
 <?php
 
-class ApiKeyAuth {
+class Auth_ApiKeyAuth {
 
   protected $clientId;
   protected $apiKey;
@@ -32,7 +32,10 @@ class ApiKeyAuth {
   }
 
   protected function fetchFromCache() {
-    return apc_fetch($this->clientId);
+    if (function_exists('apc_fetch')) {
+      return apc_fetch($this->clientId);
+    }
+    return null;
   }
 
   protected function fetchFromFile() {
@@ -47,7 +50,9 @@ class ApiKeyAuth {
         continue;
       }
       $parts = explode("\t", $line);
-      apc_store($parts[0], $parts[1]);
+      if (function_exists('apc_store')) {
+        apc_store($parts[0], $parts[1]);
+      }
       if ($parts[0] === $this->clientId) {
         $ret = $parts[1];
       }

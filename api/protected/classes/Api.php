@@ -24,7 +24,7 @@ class Api {
     if (isset($config['class'])) {
       return new $config['class'];
     } else {
-      throw new CException("Component configuration has to be array containing key 'class'.");
+      throw new Exception("Component configuration has to be array containing key 'class'.");
     }
   }
 

@@ -1,6 +1,6 @@
 <?php
 
-class ImageTypes extends Model {
+class ImageMdl_Types extends AModel {
 
   public function getTypes() {
     $this->out = array();

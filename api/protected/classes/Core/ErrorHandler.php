@@ -24,6 +24,9 @@ class ErrorHandler implements Interface_ICoreComponent {
           break;
       }
     }
+    if (Api::app()->debug && ($exception instanceof HttpException) && empty($outputMessage['message'])) {
+      $outputMessage['message'] = $exception->getMessage();
+    }
     if ($outputMessage) {
       echo json_encode($outputMessage);
     }

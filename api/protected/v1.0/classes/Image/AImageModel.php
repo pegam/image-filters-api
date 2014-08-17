@@ -1,6 +1,6 @@
 <?php
 
-abstract class Image_ImageModel extends Model {
+abstract class Image_AImageModel extends AModel {
 
   protected $dimage;
   protected $imageObj;

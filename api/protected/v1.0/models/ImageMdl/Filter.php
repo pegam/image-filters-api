@@ -1,6 +1,6 @@
 <?php
 
-class ImageFilter extends Image_ImageModel {
+class ImageMdl_Filter extends Image_AImageModel {
 
   protected $filter;
 

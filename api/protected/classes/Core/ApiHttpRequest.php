@@ -49,15 +49,17 @@ class ApiHttpRequest implements Interface_ICoreComponent {
     }
     $this->fullPath = trim($fullPath, '/');
     $this->pathQuery = $pathQuery;
-    if (empty($this->pathQuery['client'])) {
-      throw new HttpException(400, 28);
-    }
     $parts = explode('/', $this->fullPath);
-    # signature
-    if (empty($parts[0])) {
-      throw new HttpException(401);
+    if (Api::app()->secureApi) {
+      if (empty($this->pathQuery['client'])) {
+        throw new HttpException(400, 28);
+      }
+      # signature
+      if (empty($parts[0])) {
+        throw new HttpException(401);
+      }
+      $this->signature = trim(array_shift($parts));
     }
-    $this->signature = trim(array_shift($parts));
     $this->path = implode('/', $parts);
     $this->pathWithQuery = $this->path . '?' . $pathQueryStr;
     # version

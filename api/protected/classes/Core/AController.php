@@ -1,6 +1,12 @@
 <?php
 
-class Controller implements Interface_IController, Interface_ICoreComponent, Interface_IRunnable {
+abstract class AController implements Interface_IController, Interface_ICoreComponent, Interface_IRunnable {
+
+  protected $controller;
+
+  public function __construct($controller) {
+    $this->controller = $controller;
+  }
 
   public function init() {
     spl_autoload_register(array($this, 'autoload'), true, true);
@@ -8,23 +14,31 @@ class Controller implements Interface_IController, Interface_ICoreComponent, Int
 
   public function auth() {
     $pathQuery = Api::app()->request->getPathQuery();
-    $auth = new ApiKeyAuth($pathQuery['client']);
-    $auth->check();
+    if (!empty($pathQuery['client'])) {
+      $auth = new Auth_ApiKeyAuth($pathQuery['client']);
+      $auth->check();
+    }
   }
 
   public function run() {
-    $action = 'action' . ucfirst(Api::app()->request->getActionId());
-    if (!method_exists($this, $action)) {
+    $actionId = Api::app()->request->getActionId();
+    $action = 'action' . ucfirst($actionId);
+    if ($action !== 'actionAllActions' && !method_exists($this, $action)) {
       throw new HttpException(400, 6);
     }
 
-    $this->checkParams();
-    $this->checkHttpMethod($action);
+    if ($actionId === 'AllActions') {
+      if (!headers_sent()) {
+        header(Http_HttpCode::getMessage(200));
+      }
+      $res = Api::app()->resources->get($this->controller, $actionId);
+      echo json_encode($res, JSON_PRETTY_PRINT);
+    } else {
+      $this->checkHttpMethod($action);
 
-    $this->$action();
+      $this->$action();
+    }
   }
-
-  public function checkParams() {}
 
   public function checkHttpMethod($action) {
     $allowedHttpMethods = $this->getAllowedHttpMethods($action);

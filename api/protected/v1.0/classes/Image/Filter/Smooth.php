@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Smooth extends Image_Filter_Filter {
+class Image_Filter_Smooth extends Image_Filter_AFilter {
 
   protected $level;
 

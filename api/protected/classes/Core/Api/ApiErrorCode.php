@@ -14,6 +14,9 @@ class Api_ApiErrorCode {
     if ($msgArr && !isset($msgArr['errorCode'])) {
       $msgArr['errorCode'] = $code;
     }
+    if (!Api::app()->debug) {
+      unset($msgArr['moreInfo'], $msgArr['errorCode']);
+    }
     return $msgArr;
   }
 

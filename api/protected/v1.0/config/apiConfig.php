@@ -1,5 +1,3 @@
 <?php
 
-return array(
-    'debug' => true
-);
+return array();

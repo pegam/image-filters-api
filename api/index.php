@@ -5,9 +5,8 @@ header("HTTP/1.1 500 Internal Server Error");
 date_default_timezone_set('Europe/Berlin');
 
 ob_start();
-require_once dirname(__FILE__) . '/protected/classes/Api.php';
-
 define('BASE_PATH', dirname(__FILE__));
+require_once BASE_PATH . '/protected/classes/Api.php';
 $config = BASE_PATH . '/protected/config/apiConfig.php';
 
 try {

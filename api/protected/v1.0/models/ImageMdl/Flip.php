@@ -1,6 +1,6 @@
 <?php
 
-class ImageFlip extends AImageCopy {
+class ImageMdl_Flip extends ImageMdl_ACopy {
 
   const FLIP_HORIZONTAL = 'horizontal';
   const FLIP_VERTICAL = 'vertical';
@@ -10,15 +10,15 @@ class ImageFlip extends AImageCopy {
     $imgInfo = $dimage->getOrigImageInfo();
     parent::__construct($dimage, 0, 0, (int) $imgInfo[0], (int) $imgInfo[1]);
     switch ($direction) {
-      case ImageFlip::FLIP_HORIZONTAL:
+      case ImageMdl_Flip::FLIP_HORIZONTAL:
         $this->orig_xpoint = $this->orig_hsize - 1;
         $this->orig_hsize = -$this->orig_hsize;
         break;
-      case ImageFlip::FLIP_VERTICAL:
+      case ImageMdl_Flip::FLIP_VERTICAL:
         $this->orig_ypoint = $this->orig_vsize - 1;
         $this->orig_vsize = -$this->orig_vsize;
         break;
-      case ImageFlip::FLIP_BOTH:
+      case ImageMdl_Flip::FLIP_BOTH:
         $this->orig_xpoint = $this->orig_hsize - 1;
         $this->orig_hsize = -$this->orig_hsize;
         $this->orig_ypoint = $this->orig_vsize - 1;

@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Contrast extends Image_Filter_Filter {
+class Image_Filter_Contrast extends Image_Filter_AFilter {
 
   const MIN_CONTRAST = 100;
   const MAX_CONTRAST = -100;

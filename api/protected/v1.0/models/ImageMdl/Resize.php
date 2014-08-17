@@ -1,6 +1,6 @@
 <?php
 
-class ImageResize extends AImageCopy {
+class ImageMdl_Resize extends ImageMdl_ACopy {
 
   public function __construct(Image_DownloadedImage $dimage, $hsize, $vsize, $resample = false) {
     if (!$hsize && !$vsize) {

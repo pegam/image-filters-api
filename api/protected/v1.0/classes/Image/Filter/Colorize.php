@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Colorize extends Image_Filter_Filter {
+class Image_Filter_Colorize extends Image_Filter_AFilter {
 
   const MIN_COLOR_COLORIZE = -255;
   const MAX_COLOR_COLORIZE = 255;

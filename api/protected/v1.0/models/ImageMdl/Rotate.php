@@ -1,6 +1,6 @@
 <?php
 
-class ImageRotate extends Image_ImageModelDest {
+class ImageMdl_Rotate extends Image_AImageModelDest {
 
   const COLOR_MIN = 0;
   const COLOR_MAX = 255;

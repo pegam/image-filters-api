@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Gaussianblur extends Image_Filter_Filter {
+class Image_Filter_Gaussianblur extends Image_Filter_AFilter {
 
   public function __construct($dimage, $imageObj, $args) {
     parent::__construct($dimage, $imageObj, $args);

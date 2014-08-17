@@ -4,9 +4,17 @@ class Application implements Interface_IRunnable {
 
   public $environment = 'development';
   protected $components = array();
-  protected $componentConfig = array(
+  protected $componentsConfig = array(
+    'resources' => array(
+      'class' => 'Resources',
+    ),
+  );
+  protected $coreComponentsConfig = array(
       'errorHandler' => array(
         'class' => 'ErrorHandler',
+      ),
+      'shutdownHook' => array(
+        'class' => 'ShutdownHook',
       ),
       'request' => array(
         'class' => 'ApiHttpRequest',
@@ -25,6 +33,8 @@ class Application implements Interface_IRunnable {
     $this->addConfig($configArr);
 
     $this->registerCoreComponents();
+
+    register_shutdown_function(array($this, 'shutdown'), $this->debug);
   }
 
   public function __destruct() {
@@ -61,22 +71,32 @@ class Application implements Interface_IRunnable {
     return $this->getComponent('errorHandler');
   }
 
+  public function shutdown($debug) {
+    if (($handler = $this->getShutdownHook()) !== null) {
+      $handler->handle($debug);
+    } else {
+      $this->end(500);
+    }
+  }
+
+  public function getShutdownHook() {
+    return $this->getComponent('shutdownHook');
+  }
+
   public function end($code = 0) {
     exit($code);
   }
 
   public function hasComponent($id) {
-    return isset($this->components[$id]) || isset($this->componentConfig[$id]);
+    return isset($this->components[$id]) || isset($this->componentsConfig[$id]);
   }
 
-  public function getComponent($id, $createIfNull = true) {
+  public function getComponent($id) {
     if (isset($this->components[$id])) {
       return $this->components[$id];
-    } else if (isset($this->componentConfig[$id]) && $createIfNull) {
-      $compConfig = $this->componentConfig[$id];
-      $component = Api::createComponent($compConfig);
-      $component->init();
-      return $this->components[$id] = $component;
+    } else if (isset($this->componentsConfig[$id])) {
+      $compConfig = $this->componentsConfig[$id];
+      return $this->createComponent($id, $compConfig);
     }
   }
 
@@ -98,9 +118,9 @@ class Application implements Interface_IRunnable {
   }
 
   public function registerCoreComponents() {
-    if ($this->componentConfig) {
-      foreach (array_keys($this->componentConfig) as $compId) {
-        $this->getComponent($compId);
+    if ($this->coreComponentsConfig) {
+      foreach ($this->coreComponentsConfig as $compId => $compConfig) {
+        $this->createComponent($compId, $compConfig);
       }
     }
   }
@@ -149,8 +169,8 @@ class Application implements Interface_IRunnable {
       if (!class_exists($className, false)) {
         require($classFile);
       }
-      if (class_exists($className, false) && is_subclass_of($className, 'Controller')) {
-        return new $className();
+      if (class_exists($className, false) && is_subclass_of($className, 'AController')) {
+        return new $className($controllerId);
       }
     }
     return null;
@@ -162,6 +182,12 @@ class Application implements Interface_IRunnable {
       throw new HttpException(400, 2);
     }
     return $vDir;
+  }
+
+  protected function createComponent($id, $compConfig) {
+    $component = Api::createComponent($compConfig);
+    $component->init();
+    return $this->components[$id] = $component;
   }
 
 }

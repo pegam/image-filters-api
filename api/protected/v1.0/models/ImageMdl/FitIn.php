@@ -1,6 +1,6 @@
 <?php
 
-class ImageFitIn extends AImageCopy {
+class ImageMdl_FitIn extends ImageMdl_ACopy {
 
   public function __construct(Image_DownloadedImage $dimage, $hsize, $vsize, $resample = false) {
     if (!$hsize && !$vsize) {

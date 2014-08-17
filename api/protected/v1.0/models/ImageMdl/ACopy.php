@@ -1,6 +1,6 @@
 <?php
 
-abstract class AImageCopy extends Image_ImageModelDest {
+abstract class ImageMdl_ACopy extends Image_AImageModelDest {
 
   const HORIZONTAL = 1;
   const VERTICAL = 2;
@@ -26,12 +26,12 @@ abstract class AImageCopy extends Image_ImageModelDest {
     if ($hsize) {
       $this->newHsize = $hsize;
     } else {
-      $this->newHsize = $this->getSize($vsize, ImageResize::HORIZONTAL);
+      $this->newHsize = $this->getSize($vsize, ImageMdl_Resize::HORIZONTAL);
     }
     if ($vsize) {
       $this->newVsize = $vsize;
     } else {
-      $this->newVsize = $this->getSize($hsize, ImageResize::VERTICAL);
+      $this->newVsize = $this->getSize($hsize, ImageMdl_Resize::VERTICAL);
     }
     $this->resample = $resample;
 
@@ -63,9 +63,9 @@ abstract class AImageCopy extends Image_ImageModelDest {
   protected function getSize($size, $mode) {
     $prop = $this->origHsize / $this->origVsize;
     switch ($mode) {
-      case ImageResize::HORIZONTAL:
+      case ImageMdl_Resize::HORIZONTAL:
         return (int) ($size * $prop);
-      case ImageResize::VERTICAL:
+      case ImageMdl_Resize::VERTICAL:
         return (int) ($size / $prop);
     }
     throw new HttpException(500);

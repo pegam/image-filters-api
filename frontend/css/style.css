@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #333333;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  display: block;
+  background: white;
+  /*text-align: left;*/
+}
+
+hr {
+  width: 90%;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 1000px;
+  text-align: left;
+/*border: red solid 1px;*/
+}
+
+.clear {
+  clear: both;
+}
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(40%);
+}
+
+.row {
+  float: left;
+  padding: 10px;
+/*border: black solid 1px;*/
+}
+
+#left {
+  /*width: 180px;*/
+width: 178px;
+}
+
+#right {
+  /*width: 780px;*/
+width: 778px;
+}
+
+#top {
+  margin: 0 10px 10px 10px;
+  text-align: center;
+  background: #dddddd;
+  border: #a1a1a1 solid 2px;
+  border-radius: 5px;
+}
+
+.img-container {
+  width: 780px;
+  height: 480px;
+  border: blue solid 1px;
+}
+
+.upload {
+  display: none;
+}

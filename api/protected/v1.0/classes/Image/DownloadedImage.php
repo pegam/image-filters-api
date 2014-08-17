@@ -41,17 +41,21 @@ class Image_DownloadedImage {
   }
 
   private function doPost() {
-    if (!$_FILES) {
-      throw new HttpException(400, 10);
-    }
-    $filesArrElement = reset($_FILES);
-    if (!$filesArrElement['tmp_name']) {
-      throw new HttpException(400, 10);
-    }
-    $this->origFilename = $filesArrElement['name'];
-    $this->localFileLoc = $this->tempDir . '/' . basename($filesArrElement['tmp_name']);
-    if (!rename($filesArrElement['tmp_name'], $this->localFileLoc)) {
-      throw new HttpException(500);
+    if (isset($_GET['url'])) {
+      $this->doGet();
+    } else {
+      if (!$_FILES) {
+        throw new HttpException(400, 10);
+      }
+      $filesArrElement = reset($_FILES);
+      if (!$filesArrElement['tmp_name']) {
+        throw new HttpException(400, 10);
+      }
+      $this->origFilename = $filesArrElement['name'];
+      $this->localFileLoc = $this->tempDir . '/' . basename($filesArrElement['tmp_name']);
+      if (!rename($filesArrElement['tmp_name'], $this->localFileLoc)) {
+        throw new HttpException(500);
+      }
     }
   }
 

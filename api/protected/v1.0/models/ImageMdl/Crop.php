@@ -1,6 +1,6 @@
 <?php
 
-class ImageCrop extends AImageCopy {
+class ImageMdl_Crop extends ImageMdl_ACopy {
 
   public function __construct(Image_DownloadedImage $dimage, $xpoint, $ypoint, $hsize, $vsize) {
     if ((!$hsize && !$vsize) || $xpoint < 0 || $ypoint < 0) {

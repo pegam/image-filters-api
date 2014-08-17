@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Filter {
+abstract class Image_Filter_AFilter {
 
   protected $dimage;
   protected $im;

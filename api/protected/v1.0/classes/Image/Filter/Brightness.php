@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Brightness extends Image_Filter_Filter {
+class Image_Filter_Brightness extends Image_Filter_AFilter {
 
   const MIN_BRIGHTNESS = -255;
   const MAX_BRIGHTNESS = 255;

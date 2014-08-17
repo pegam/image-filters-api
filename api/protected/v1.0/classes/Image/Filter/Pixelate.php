@@ -1,6 +1,6 @@
 <?php
 
-class Image_Filter_Pixelate extends Image_Filter_Filter {
+class Image_Filter_Pixelate extends Image_Filter_AFilter {
 
   const MIN_SIZE = 1;
   protected $size;
