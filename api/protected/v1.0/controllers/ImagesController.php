@@ -47,10 +47,6 @@ class ImagesController extends AController {
     if (isset($resizeArgs['vsize']) && is_numeric($resizeArgs['vsize'])) {
       $vsize = (int) $resizeArgs['vsize'];
     }
-//    if (isset($resizeArgs['resample'])) {
-//      $resample = filter_var($resizeArgs['resample'], FILTER_VALIDATE_BOOLEAN);
-//    }
-
     $dimage = new Image_DownloadedImage();
     $model = new ImageMdl_Resize($dimage, $hsize, $vsize, $resample);
     $model->apply();
@@ -82,10 +78,6 @@ class ImagesController extends AController {
     if (isset($cropArgs['vsize']) && is_numeric($cropArgs['vsize'])) {
       $vsize = (int) $cropArgs['vsize'];
     }
-//    if (isset($cropArgs['resample'])) {
-//      $resample = filter_var($cropArgs['resample'], FILTER_VALIDATE_BOOLEAN);
-//    }
-
     $dimage = new Image_DownloadedImage();
     $model = new ImageMdl_Crop($dimage, $xpoint, $ypoint, $hsize, $vsize, $resample);
     $model->apply();
@@ -109,10 +101,6 @@ class ImagesController extends AController {
     if (isset($fitinArgs['vsize']) && is_numeric($fitinArgs['vsize'])) {
       $vsize = (int) $fitinArgs['vsize'];
     }
-//    if (isset($fitinArgs['resample'])) {
-//      $resample = filter_var($fitinArgs['resample'], FILTER_VALIDATE_BOOLEAN);
-//    }
-
     $dimage = new Image_DownloadedImage();
     $model = new ImageMdl_FitIn($dimage, $hsize, $vsize, $resample);
     $model->apply();
