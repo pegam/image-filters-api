@@ -35,25 +35,25 @@ abstract class ImageMdl_ACopy extends Image_AImageModelDest {
     }
     $this->resample = $resample;
 
-    $this->dest_image_obj = imagecreatetruecolor($this->newHsize, $this->newVsize);
-    if (!$this->dest_image_obj) {
+    $this->destImageObj = imagecreatetruecolor($this->newHsize, $this->newVsize);
+    if (!$this->destImageObj) {
       throw new HttpException(500);
     }
   }
 
   public function apply() {
-    if (!imagealphablending($this->dest_image_obj, false)) {
+    if (!imagealphablending($this->destImageObj, false)) {
       throw new HttpException(500);
     }
-    if (!imagesavealpha($this->dest_image_obj, true)) {
+    if (!imagesavealpha($this->destImageObj, true)) {
       throw new HttpException(500);
     }
     if ($this->resample) {
-      if (!imagecopyresampled($this->dest_image_obj, $this->image_obj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
+      if (!imagecopyresampled($this->destImageObj, $this->imageObj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
         throw new HttpException(500);
       }
     } else {
-      if (!imagecopyresized($this->dest_image_obj, $this->image_obj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
+      if (!imagecopyresized($this->destImageObj, $this->imageObj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
         throw new HttpException(500);
       }
     }

@@ -9,15 +9,15 @@ abstract class Image_AImageModel extends AModel {
     $this->dimage = $dimage;
     # create starting image object
     $funcName = "imagecreatefrom{$this->dimage->getOrigImageType()}";
-    $this->image_obj = $funcName($this->dimage->getLocalFileLocation());
-    if (!$this->image_obj) {
+    $this->imageObj = $funcName($this->dimage->getLocalFileLocation());
+    if (!$this->imageObj) {
       throw new HttpException(500);
     }
   }
 
   public function __destruct() {
-    if ($this->image_obj) {
-      imagedestroy($this->image_obj);
+    if ($this->imageObj) {
+      imagedestroy($this->imageObj);
     }
     if (!isset($GLOBALS['image.filters.tmp.dirs']) || !in_array($this->dimage->getTempDir(), $GLOBALS['image.filters.tmp.dirs'])) {
       $GLOBALS['image.filters.tmp.dirs'][] = $this->dimage->getTempDir();
@@ -29,7 +29,7 @@ abstract class Image_AImageModel extends AModel {
   public function save() {
     # create resulting image object
     $funcName = "image" . $this->dimage->getReturnImageType();
-    if (!$funcName($this->image_obj, $this->dimage->getReturnFileLocation())) {
+    if (!$funcName($this->imageObj, $this->dimage->getReturnFileLocation())) {
       throw new HttpException(500);
     }
   }

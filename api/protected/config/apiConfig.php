@@ -22,9 +22,9 @@ return array(
         IMG_FILTER_SMOOTH         => 'smooth',
         IMG_FILTER_PIXELATE       => 'pixelate',
     ),
-    'debug' => true,
+    'debug' => false,
     'latestActiveVersion' => '1.0',
-    'secureApi' => false,
+    'secureApi' => true,
     'apiKeysFile' => BASE_PATH . '/protected/storage/apiKeys.tsv',
 //    'uploadedImgMaxSize'          => 10240, // php.ini - upload_max_filesize i post_max_size
 );

@@ -12,7 +12,6 @@ class ImageMdl_Rotate extends Image_AImageModelDest {
   protected $bggreen;
   protected $bgblue;
   protected $bgalpha;
-  protected $destImageObj;
 
   public function __construct(Image_DownloadedImage $dimage, $angle, $bgred, $bggreen, $bgblue, $bgalpha) {
     parent::__construct($dimage);
@@ -25,9 +24,9 @@ class ImageMdl_Rotate extends Image_AImageModelDest {
   }
 
   public function apply() {
-    $this->destImageObj = imagerotate($this->image_obj,
+    $this->destImageObj = imagerotate($this->imageObj,
                                       $this->angle,
-                                      imagecolorallocatealpha($this->image_obj,
+                                      imagecolorallocatealpha($this->imageObj,
                                                               $this->bgred,
                                                               $this->bggreen,
                                                               $this->bgblue,

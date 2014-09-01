@@ -11,30 +11,30 @@ class ImageMdl_Flip extends ImageMdl_ACopy {
     parent::__construct($dimage, 0, 0, (int) $imgInfo[0], (int) $imgInfo[1]);
     switch ($direction) {
       case ImageMdl_Flip::FLIP_HORIZONTAL:
-        $this->orig_xpoint = $this->orig_hsize - 1;
-        $this->orig_hsize = -$this->orig_hsize;
+        $this->origXpoint = $this->origHsize - 1;
+        $this->origHsize = -$this->origHsize;
         break;
       case ImageMdl_Flip::FLIP_VERTICAL:
-        $this->orig_ypoint = $this->orig_vsize - 1;
-        $this->orig_vsize = -$this->orig_vsize;
+        $this->origYpoint = $this->origVsize - 1;
+        $this->origVsize = -$this->origVsize;
         break;
       case ImageMdl_Flip::FLIP_BOTH:
-        $this->orig_xpoint = $this->orig_hsize - 1;
-        $this->orig_hsize = -$this->orig_hsize;
-        $this->orig_ypoint = $this->orig_vsize - 1;
-        $this->orig_vsize = -$this->orig_vsize;
+        $this->origXpoint = $this->origHsize - 1;
+        $this->origHsize = -$this->origHsize;
+        $this->origYpoint = $this->origVsize - 1;
+        $this->origVsize = -$this->origVsize;
         break;
     }
   }
 
   public function apply() {
-    if (!imagealphablending($this->dest_image_obj, false)) {
+    if (!imagealphablending($this->destImageObj, false)) {
       throw new HttpException(500);
     }
-    if (!imagesavealpha($this->dest_image_obj, true)) {
+    if (!imagesavealpha($this->destImageObj, true)) {
       throw new HttpException(500);
     }
-    if (!imagecopyresampled($this->dest_image_obj, $this->image_obj, 0, 0, $this->orig_xpoint, $this->orig_ypoint, $this->new_hsize, $this->new_vsize, $this->orig_hsize, $this->orig_vsize)) {
+    if (!imagecopyresampled($this->destImageObj, $this->imageObj, 0, 0, $this->origXpoint, $this->origYpoint, $this->newHsize, $this->newVsize, $this->origHsize, $this->origVsize)) {
       throw new HttpException(500);
     }
     $this->save();

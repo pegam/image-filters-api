@@ -17,7 +17,10 @@ class Resources implements Interface_ICoreComponent {
     if ($action === 'allactions') {
       return array($controller => $this->resources['resources'][$controller]);
     }
-    return array($controller => array('action' => array($action => $this->resources['resources'][$controller]['actions'][$action])));
+    if (isset($this->resources['resources'][$controller]['actions'][$action])) {
+      return array($controller => array('action' => array($action => $this->resources['resources'][$controller]['actions'][$action])));
+    }
+    return null;
   }
 
 }

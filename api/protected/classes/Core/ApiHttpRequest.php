@@ -30,6 +30,12 @@ class ApiHttpRequest implements Interface_ICoreComponent {
       $this->method = 'GET';
     }
     if (!in_array($this->method, Api::app()->allowedHttpRequestMethods)) {
+      if ($this->method === 'OPTIONS') {
+        if (!headers_sent()) {
+          header("HTTP/1.1 200 OK");
+          APi::app()->end();
+        }
+      }
       throw new HttpException(400, 7);
     }
     # path info & query

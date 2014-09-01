@@ -1,28 +1,21 @@
 body {
   margin: 0;
   padding: 0;
-  text-align: center;
-  background: #333333;
+  background: #333;
+}
+
+div, img {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 div {
-  margin: 0;
-  padding: 0;
-  display: block;
   background: white;
-  /*text-align: left;*/
 }
 
 hr {
   width: 90%;
-}
-
-#container {
-  margin: 0 auto;
-  padding: 20px 0;
-  width: 1000px;
-  text-align: left;
-/*border: red solid 1px;*/
 }
 
 .clear {
@@ -32,39 +25,129 @@ hr {
 .vertical-align {
   position: relative;
   top: 50%;
-  transform: translateY(40%);
+  transform: translateY(60%);
 }
 
-.row {
+.cell {
   float: left;
   padding: 10px;
-/*border: black solid 1px;*/
+  display: block;
 }
 
-#left {
-  /*width: 180px;*/
-width: 178px;
-}
-
-#right {
-  /*width: 780px;*/
-width: 778px;
-}
-
-#top {
-  margin: 0 10px 10px 10px;
+.centered-text {
   text-align: center;
-  background: #dddddd;
-  border: #a1a1a1 solid 2px;
+}
+
+.left-column {
+  width: 228px;
+}
+
+.right-column {
+  width: 728px;
+}
+
+.top {
+  margin: 10px 50px;
+  border: #818181 solid 1px;
   border-radius: 5px;
+  background: #bbb;
 }
 
 .img-container {
-  width: 780px;
-  height: 480px;
-  border: blue solid 1px;
+  width: 730px;
+  height: 430px;
+  border: #818181 solid 1px;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 426px;
+  background: #eee;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
 }
 
 .upload {
+  display: none;
+}
+
+.text-color-red {
+  color: red;
+}
+
+.small-text {
+  font-size: xx-small;
+}
+
+.loader {
+  padding: 2px 0px;
+}
+
+.api-dbg {
+  display: none;
+  border: red solid 1px;
+  position: absolute;
+  z-index: 100;
+  width: 600px;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 1000px;
+  text-align: left;
+}
+
+#top-outer {
+  margin-top: 0;
+}
+
+#top-inner {
+  background: #ddd;
+}
+
+#actions-container {
+  height: 23px;
+}
+
+#api-actions {
+  display: none;
+  margin: 0px 10px;
+  padding: 0px 30px;
+  text-align: center;
+}
+
+#api-actions-error {
+  font-weight: bold;
+  display: none;
+}
+
+#api-request-url {
+  overflow-y: auto;
+}
+
+#api-response-text {
+  max-height: 800px;
+  overflow: auto;
+}
+
+#action-params {
+  margin-top: 10px;
+}
+
+#debug {
+  padding: 5px;
+  border: #818181 solid 1px;
+  border-radius: 5px;
+}
+
+#debug, #api-url, #api-code, #api-text {
+  background: #eee;
+}
+
+#img-original-local, #img-original-remote {
   display: none;
 }

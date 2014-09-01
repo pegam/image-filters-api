@@ -1,6 +1,10 @@
 <?php
 
 header("HTTP/1.1 500 Internal Server Error");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Max-Age: 1000');
+header('Access-Control-Allow-Headers: origin, x-csrftoken, content-type, accept');
 
 date_default_timezone_set('Europe/Berlin');
 

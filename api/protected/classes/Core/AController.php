@@ -27,15 +27,11 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
       throw new HttpException(400, 6);
     }
 
-    if ($actionId === 'AllActions') {
-      if (!headers_sent()) {
-        header(Http_HttpCode::getMessage(200));
+    if ($actionId === 'AllActions' || !$this->checkHttpMethod($action)) {
+      if ($this->printResourcesDocumentation($actionId) === null) {
+        throw new HttpException(400, 7);
       }
-      $res = Api::app()->resources->get($this->controller, $actionId);
-      echo json_encode($res, JSON_PRETTY_PRINT);
     } else {
-      $this->checkHttpMethod($action);
-
       $this->$action();
     }
   }
@@ -43,8 +39,9 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
   public function checkHttpMethod($action) {
     $allowedHttpMethods = $this->getAllowedHttpMethods($action);
     if ($allowedHttpMethods !== null && !in_array(Api::app()->request->getHttpMethod(), $allowedHttpMethods)) {
-      throw new HttpException(400, 7);
+      return false;
     }
+    return true;
   }
 
   public function getAllowedHttpMethods($action) {
@@ -86,6 +83,18 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
         require_once $path;
       }
     }
+  }
+
+  protected function printResourcesDocumentation($actionId) {
+    $res = Api::app()->resources->get($this->controller, $actionId);
+    if ($res) {
+      if (!headers_sent()) {
+        header(Http_HttpCode::getMessage(200));
+        header('Content-Type: application/json');
+      }
+      echo json_encode($res, JSON_PRETTY_PRINT);
+    }
+    return $res;
   }
 
 }
