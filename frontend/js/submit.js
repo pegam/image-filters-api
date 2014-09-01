@@ -122,7 +122,7 @@ function customAjaxGetImage(url, success, error) {
       responseText = this.statusText;
     } else {
       var blob = oReq.response;
-      var imgSrc = URL.createObjectURL(blob);
+      var imgSrc = (window.webkitURL || window.URL).createObjectURL(blob);
       var reader  = new FileReader();
       reader.onloadend = function() {
         var aHref = reader.result;
@@ -135,7 +135,7 @@ function customAjaxGetImage(url, success, error) {
       }
       reader.readAsDataURL(blob);
       success(imgSrc);
-      URL.revokeObjectURL(imgSrc);
+      (window.webkitURL || window.URL).revokeObjectURL(imgSrc);
     }
     printApiResponse(url, this.status, responseText);
   };

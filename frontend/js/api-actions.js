@@ -132,13 +132,26 @@ function addFilterChoice(parent, name, param) {
     el += ' data-tooltip="' + param['description'] + '" class="tooltip" onmouseover="hoverOverTooltip(this, event)" onmouseout="hoverOutTooltip(this)"';
   }
   el += '>';
+  if (name === 'out') {
+    label += 'resulting image format';
+  } else {
+    label += name;
+  }
   if (param['required']) {
     label += ' <span class="text-color-red">*</span>';
   }
   label += '</label>';
   el += '<option value="" selected></option>';
   for (var i in param['choice']) {
-    el += '<option value="' + i + '">' + i + '</option>';
+    if (name === 'out') {
+      if (val === 'jpg') {
+        continue;
+      }
+      var val = param['choice'][i];
+      el += '<option value="' + val + '">' + val + '</option>';
+    } else {
+      el += '<option value="' + i + '">' + i + '</option>';
+    }
   }
   el += '</select>';
   el = label + br + el + br + br;

@@ -5,4 +5,4 @@ $envFile = $_SERVER['DOCUMENT_ROOT'] . '/protected/environment';
 if (file_exists($envFile) && trim(file_get_contents($envFile)) === 'production') {
   $apiDomain = 'http://api-imagefilters.byethost31.com';
 }
-include 'Views/index.php';
+include 'protected/views/index.php';

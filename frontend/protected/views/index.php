@@ -19,7 +19,7 @@
     <div id="container">
       <div id="top-outer" class="top">
         <div id="top-inner" class="top centered-text">
-          <h1>Image Editor</h1>
+          <h1 id="title">Image Editor</h1>
         </div>
       </div>
       <div id="upload-container">
