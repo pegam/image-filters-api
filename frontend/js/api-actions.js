@@ -144,10 +144,10 @@ function addFilterChoice(parent, name, param) {
   el += '<option value="" selected></option>';
   for (var i in param['choice']) {
     if (name === 'out') {
+      var val = param['choice'][i];
       if (val === 'jpg') {
         continue;
       }
-      var val = param['choice'][i];
       el += '<option value="' + val + '">' + val + '</option>';
     } else {
       el += '<option value="' + i + '">' + i + '</option>';

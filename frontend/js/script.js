@@ -66,7 +66,7 @@ function buildUrl(controller, data) {
     p += '?' + query;
     url += '/' + getSignature(p) + '/' + p
   } else {
-    url += '/controller';
+    url += '/' + controller;
     if (query) {
       url += '?' + query;
     }
