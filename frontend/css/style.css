@@ -25,7 +25,11 @@ hr {
 .vertical-align {
   position: relative;
   top: 50%;
-  transform: translateY(60%);
+  -webkit-transform: translateY(55%);
+  -moz-transform: translateY(55%);
+  -o-transform: translateY(55%);
+  -ms-transform: translateY(55%);
+  transform: translateY(55%);
 }
 
 .cell {
@@ -70,7 +74,7 @@ hr {
   vertical-align: middle;
 }
 
-.upload {
+.no-display {
   display: none;
 }
 
@@ -86,12 +90,20 @@ hr {
   padding: 2px 0px;
 }
 
-.api-dbg {
+/*.api-dbg {
   display: none;
   border: red solid 1px;
   position: absolute;
   z-index: 100;
   width: 600px;
+}*/
+
+.api-error {
+  font-weight: bold;
+}
+
+.save-img {
+  float: right;
 }
 
 #title {
@@ -113,29 +125,26 @@ hr {
   background: #ddd;
 }
 
+#api-original-local-img-error, #api-original-remote-img-error, #api-edited-img-error {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  overflow: auto;
+  line-height: initial;
+}
+
 #actions-container {
   height: 23px;
 }
 
 #api-actions {
-  display: none;
   margin: 0px 10px;
   padding: 0px 30px;
   text-align: center;
 }
 
-#api-actions-error {
-  font-weight: bold;
-  display: none;
-}
-
 #api-request-url {
   overflow-y: auto;
-}
-
-#api-response-text {
-  max-height: 800px;
-  overflow: auto;
 }
 
 #action-params {
@@ -152,6 +161,6 @@ hr {
   background: #eee;
 }
 
-#img-original-local, #img-original-remote {
+/*#img-original-local, #img-original-remote {
   display: none;
-}
+}*/

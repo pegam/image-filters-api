@@ -29,11 +29,11 @@
           <input type="radio" id="radio-upload-remote" name="radio-upload" value="remote" /><label for="radio-upload-remote">Remote File</label><br />
         </div>
         <div class="cell vertical-align">
-          <div id="upload-local" class="upload">
+          <div id="upload-local" class="no-display">
             <input type="file" id="f_file_local" name="post_img" />
           </div>
-          <div id="upload-remote" class="upload">
-            <input type="text" id="f_file_remote" name="url" placeholder=" Url" size="100" />
+          <div id="upload-remote" class="no-display">
+            <input type="text" id="f_file_remote" name="url" placeholder=" Url" size="85" />
           </div>
         </div>
         <br class="clear" />
@@ -43,8 +43,8 @@
         <div id="loader-container">
           <img class="loader" src="media/images/ajax-loader.gif" />
         </div>
-        <div id="api-actions"><ul></ul></div>
-        <div id="api-actions-error" class="text-color-red">Error calling Image API!</div>
+        <div id="api-actions" class="no-display"><ul></ul></div>
+        <div id="api-actions-error" class="api-error no-display text-color-red">Error!</div>
       </div>
       <hr />
       <div class="row">
@@ -54,25 +54,30 @@
         </div>
         <div id="original-image" class="cell right-column">
           Original Image:
+          <div class="save-img no-display"><a href="javascript:void(0)" download>Save image</a></div>
+          <br class="clear" />
           <div id="img-original" class="img-container">
-            <a target="_blank"><img id="img-original-local" src="" alt="Original image" class="img" /></a>
-            <a target="_blank"><img id="img-original-remote" src="" alt="Original image" class="img" /></a>
+            <div id="local-image-container">
+              <a target="_blank"><img id="img-original-local" src="" alt="Original image" class="img no-display" /></a>
+              <div id="api-original-local-img-error" class="api-error no-display"></div>
+            </div>
+            <div id="remote-image-container">
+              <a target="_blank"><img id="img-original-remote" src="" alt="Original image" class="img no-display" /></a>
+              <div id="api-original-remote-img-error" class="api-error no-display"></div>
+            </div>
           </div>
         </div>
         <br class="clear" />
       </div>
       <div class="row">
-        <div id="api-response" class="cell left-column">
-          Debug:
-          <div id="debug">
-            <div id="api-url"></div>
-            <div id="api-code"></div>
-            <div id="api-text"></div>
-          </div>
-        </div>
+        <div class="cell left-column"></div>
         <div id="edited-image" class="cell right-column">
           Edited Image:
-          <div id="img-edited" class="img-container"></div>
+          <div class="save-img no-display"><a href="javascript:void(0)" download>Save image</a></div>
+          <br class="clear" />
+          <div id="img-edited" class="img-container">
+            <div id="api-edited-img-error" class="api-error no-display text-color-red">Error!</div>
+          </div>
         </div>
         <br class="clear" />
       </div>
