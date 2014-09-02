@@ -127,7 +127,7 @@ function addFilterChoice(parent, name, param) {
   var id = 'f_' + name,
       el = '<select id="' + id + '" name="' + name + '" onchange="addFilterParams(this.value)"',
       br = '<br />',
-      label = '<label for="' + id + '">' + name;
+      label = '<label for="' + id + '">';
   if (param['description']) {
     el += ' data-tooltip="' + param['description'] + '" class="tooltip" onmouseover="hoverOverTooltip(this, event)" onmouseout="hoverOutTooltip(this)"';
   }
