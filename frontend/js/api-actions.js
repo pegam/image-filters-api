@@ -1,10 +1,20 @@
+function createActionButton(action, description) {
+  var a = '<li><a href="javascript:void(0)"';
+  if (description) {
+    a += ' data-tooltip="' + description + '" class="tooltip" onmouseover="hoverOverTooltip(this, event)" onmouseout="hoverOutTooltip(this)"';
+  }
+  a += ' onclick="apiAction(this)">' + action + '</a></li>';
+  $('#api-actions > ul').append(a);
+}
+
 function apiAction(action) {
   hoverOutTooltip();
   $('.action-active').removeClass('action-active');
   $(action).parent().addClass('action-active');
   loadActionParams($.trim($(action).text()));
-  $('#img-edited').empty();
-  $('#submit-btn').removeAttr('disabled');
+  $('#imgage-edited').addClass('no-display');
+  $('#edited-image > div.save-img > a').parent().addClass('no-display');
+  $('#submit-btn').removeAttr('disabled');// !!! prvo proveri da li upload slika ok !!!
 }
 
 function loadActionParams(action) {
@@ -161,7 +171,8 @@ function addFilterChoice(parent, name, param) {
 
 function addFilterParams(filter) {
   $('#filter-params').empty();
-  $('#img-edited').empty();
+  $('#imgage-edited').addClass('no-display');
+  $('#edited-image > div.save-img > a').parent().addClass('no-display');
   if (apiResourcesObj && apiResourcesObj[resource]['actions']['filter']['parameters']['name']['choice'][filter]['parameters']) {
     var parent = $('#filter-params');
     params = apiResourcesObj[resource]['actions']['filter']['parameters']['name']['choice'][filter]['parameters'];

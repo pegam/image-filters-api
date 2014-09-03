@@ -3,13 +3,13 @@ ul, li {
   padding: 0;
 }
 
-div#api-actions ul {
+#api-actions ul {
   overflow: hidden;
   list-style-type: none;
   display: inline-block;
 }
 
-div#api-actions li {
+#api-actions li {
   height: 23px;
   float: left;
   margin-right: 0px;
@@ -17,11 +17,11 @@ div#api-actions li {
   padding: 0 20px;
 }
 
-div#api-actions li:last-child {
+#api-actions li:last-child {
   border-right: none;
 }
 
-div#api-actions li a {
+#api-actions li a {
   text-decoration: none;
   color: #ccc;
   font: 25px/1 Helvetica, Verdana, sans-serif;
@@ -34,11 +34,11 @@ div#api-actions li a {
   transition: all 0.5s ease;
 }
 
-div#api-actions li a:hover {
+#api-actions li a:hover {
   color: #666;
 }
 
-div#api-actions li.action-active a {
+#api-actions li.action-active a {
   font-weight: bold;
   color: #333;
 }

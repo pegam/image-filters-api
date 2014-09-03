@@ -29,11 +29,13 @@
           <input type="radio" id="radio-upload-remote" name="radio-upload" value="remote" /><label for="radio-upload-remote">Remote File</label><br />
         </div>
         <div class="cell vertical-align">
-          <div id="upload-local" class="no-display">
-            <input type="file" id="f_file_local" name="post_img" />
+          <div id="upload-local" class="upload no-display">
+            <input type="file" id="file_local" name="t_post_img" />
+            <input type="hidden" id="f_file_local" name="url" />
           </div>
-          <div id="upload-remote" class="no-display">
-            <input type="text" id="f_file_remote" name="url" placeholder=" Url" size="85" />
+          <div id="upload-remote" class="upload no-display">
+            <input type="text" id="file_remote" name="t_url" placeholder=" Url" size="85" />
+            <input type="hidden" id="f_file_remote" name="url" />
           </div>
         </div>
         <br class="clear" />
@@ -57,11 +59,11 @@
           <div class="save-img no-display"><a href="javascript:void(0)" download>Save image</a></div>
           <br class="clear" />
           <div id="img-original" class="img-container">
-            <div id="local-image-container">
+            <div id="local-image-container" class="img no-display">
               <a target="_blank"><img id="img-original-local" src="" alt="Original image" class="img no-display" /></a>
               <div id="api-original-local-img-error" class="api-error no-display"></div>
             </div>
-            <div id="remote-image-container">
+            <div id="remote-image-container" class="img no-display">
               <a target="_blank"><img id="img-original-remote" src="" alt="Original image" class="img no-display" /></a>
               <div id="api-original-remote-img-error" class="api-error no-display"></div>
             </div>
@@ -76,6 +78,7 @@
           <div class="save-img no-display"><a href="javascript:void(0)" download>Save image</a></div>
           <br class="clear" />
           <div id="img-edited" class="img-container">
+            <a target="_blank"><img id="imgage-edited" src="" alt="Original image" class="img no-display" /></a>
             <div id="api-edited-img-error" class="api-error no-display text-color-red">Error!</div>
           </div>
         </div>
