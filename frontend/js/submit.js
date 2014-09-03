@@ -105,7 +105,7 @@ function isOkType(obj, value) {
 
 function sendToApi(params) {
   var url = 'getEditedImage.php';
-  $('#imgage-edited').attr('src', 'media/images/ajax-loader.gif');
+  $('#imgage-edited').attr('src', 'media/images/ajax-loader.gif').removeClass('no-display');
   ajaxGet(url, params, sendToApiSuccess, sendToApiError);
 }
 

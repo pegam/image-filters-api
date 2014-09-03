@@ -19,9 +19,13 @@ $(function() {
     if (url !== $('#file_remote').data('url')) {
       $('#original-image > div.save-img').addClass('no-display');
       if (url) {
-        $('#img-original-remote').attr('src', 'media/images/ajax-loader.gif').parent().attr('href', 'javascript:void(0)');
+        $('#img-original-remote').attr('src', 'media/images/ajax-loader.gif').removeClass('no-display').parent().attr('href', 'javascript:void(0)');
         $('#remote-image-container').removeClass('no-display');
         uploadRemoteImg(url);
+      } else {
+        $('#img-original-remote').attr('src', '').addClass('no-display').parent().removeAttr('href');
+        $('#remote-image-container').removeClass('no-display');
+        $('#file_remote').removeData('url');
       }
     }
   });
@@ -30,7 +34,7 @@ $(function() {
     $('#edited-image > div.save-img > a').parent().addClass('no-display');
     $('#f_file_local').val();
     $('#original-image > div.save-img').addClass('no-display');
-    $('#img-original-local').attr('src', 'media/images/ajax-loader.gif').parent().attr('href', 'javascript:void(0)');
+    $('#img-original-local').attr('src', 'media/images/ajax-loader.gif').removeClass('no-display').parent().attr('href', 'javascript:void(0)');
     $('#local-image-container').removeClass('no-display');
     uploadLocalImg();
   });

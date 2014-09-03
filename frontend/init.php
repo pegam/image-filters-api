@@ -32,7 +32,8 @@ function apiCurl($url, $post = false, &$fp = null) {
     curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
   }
   $response = curl_exec($ch);
-  list($header, $return) = explode("\r\n\r\n", $response, 2);
+  $return = explode("\r\n\r\n", $response, 2);
+  $return = array_pop($return);
   $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   curl_close($ch);
   if ($responseCode !== 200) {
@@ -76,7 +77,9 @@ function handleDownloadedImage($baseDir, $tmpfile, $name) {
     mkdir($baseDir . "/media/tmp/{$hash}");
     rename($tmpfile, $baseDir . $path);
   }
-  unlink($tmpfile);
+  if (file_exists($tmpfile)) {
+    unlink($tmpfile);
+  }
   return $path;
 }
 
