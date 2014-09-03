@@ -14,7 +14,7 @@ function apiAction(action) {
   loadActionParams($.trim($(action).text()));
   $('#imgage-edited').addClass('no-display');
   $('#edited-image > div.save-img > a').parent().addClass('no-display');
-  $('#submit-btn').removeAttr('disabled');// !!! prvo proveri da li upload slika ok !!!
+  $('#submit-btn').removeAttr('disabled');
 }
 
 function loadActionParams(action) {
