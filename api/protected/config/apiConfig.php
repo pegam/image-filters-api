@@ -22,7 +22,7 @@ return array(
         IMG_FILTER_SMOOTH         => 'smooth',
         IMG_FILTER_PIXELATE       => 'pixelate',
     ),
-    'debug' => false,
+    'debug' => true,
     'latestActiveVersion' => '1.0',
     'secureApi' => false,
     'apiKeysFile' => BASE_PATH . '/protected/storage/apiKeys.tsv',

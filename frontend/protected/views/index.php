@@ -22,11 +22,14 @@
           <h1 id="title">Image Editor</h1>
         </div>
       </div>
+      <div id="api-version">Api version: <span id="version"></span></div>
+      <br class="clear" />
       <div id="upload-container">
         <div class="cell">
           Upload Image:<br />
           <input type="radio" id="radio-upload-local" name="radio-upload" value="local" checked /><label for="radio-upload-local">Local File</label><br />
           <input type="radio" id="radio-upload-remote" name="radio-upload" value="remote" /><label for="radio-upload-remote">Remote File</label><br />
+          <span class="small-text">(Supported formats: </span><span id="supported-formats"></span><span class="small-text">)</span><br />
         </div>
         <div class="cell vertical-align">
           <div id="upload-local" class="upload no-display">

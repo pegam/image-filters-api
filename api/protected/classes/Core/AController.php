@@ -73,7 +73,7 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
 
   public function autoload($className) {
     $className = str_replace("_", "/", $className);
-    $basePath = BASE_PATH . '/protected/' . Api::app()->request->getApiVersion();
+    $basePath = BASE_PATH . '/protected/v' . Api::app()->request->getApiVersion();
     $path = $basePath . '/classes/' . $className . '.php';
     if (file_exists($path)) {
       require_once $path;

@@ -10,6 +10,7 @@ $(function() {
   $('input:radio[name=radio-upload]').on('change', function() {
     changeRadio();
   });
+  loadSupportedFormats();
   loadApiActions();
   $('#file_remote').on('blur', function() {
     var url = $(this).val();
@@ -55,12 +56,45 @@ function changeRadio() {
   $('#edited-image > div.save-img > a').parent().addClass('no-display');
 }
 
+function loadSupportedFormats() {
+  var url = 'getSupportedFormats.php';
+  return ajaxGet(url, null, loadSupportedFormatsSuccess, loadSupportedFormatsError);
+}
+
+function loadSupportedFormatsSuccess(response, textStatus, jqXHR) {
+  if ($.isArray(response)) {
+    var formats = '';
+    for (var i = 0; i < response.length; ++i) {
+      if (formats) {
+        if (i === response.length - 1) {
+          formats += ' and ';
+        } else {
+          formats += ', ';
+        }
+      }
+      formats += response[i];
+    }
+    $('#supported-formats').removeClass('text-color-red').addClass('small-text').html(formats);
+  } else {
+    loadSupportedFormatsError(jqXHR);
+  }
+}
+
+function loadSupportedFormatsError(jqXHR) {
+  $('#supported-formats').addClass('text-color-red').removeClass('small-text').html('Error.');
+}
+
 function loadApiActions() {
   var url = 'getActions.php';
   return ajaxGet(url, null, loadApiActionsSuccess, loadApiActionsError);
 }
 
 function loadApiActionsSuccess(response, textStatus, jqXHR) {
+  if (response['version']) {
+    $('#version').removeClass('text-color-red').html(response['version']);
+  } else {
+    $('#version').addClass('text-color-red').html('Error.');
+  }
   if (response[resource] && response[resource]['actions']) {
     apiResourcesObj = response;
     for (var action in response[resource]['actions']) {

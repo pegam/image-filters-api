@@ -2,7 +2,7 @@
 
 class ApiHttpRequest implements Interface_ICoreComponent {
 
-  const VERSION_PATTERN = '/^v[\d]+\.\d+$/';
+  const VERSION_PATTERN = '/^[\d]+\.\d+$/';
 
   protected $method;
   protected $fullPath;
@@ -73,9 +73,9 @@ class ApiHttpRequest implements Interface_ICoreComponent {
       array_shift($parts);
     }
     if (!isset($parts[0]) || !preg_match('/v\\d+/i', $parts[0])) {
-      $this->version = 'v' . Api::app()->latestActiveVersion;
+      $this->version = Api::app()->latestActiveVersion;
     } else {
-      $this->version = strtolower(trim(array_shift($parts)));
+      $this->version = strtolower(trim(substr(array_shift($parts), 1)));
     }
     if (!preg_match(ApiHttpRequest::VERSION_PATTERN, $this->version)) {
       throw new HttpException(400, 2);

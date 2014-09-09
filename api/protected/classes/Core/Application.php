@@ -139,7 +139,7 @@ class Application implements Interface_IRunnable {
   }
 
   public function addVersionConfig() {
-    $configLoc = BASE_PATH . '/protected/' . $this->request->getApiVersion() . '/config/apiConfig.php';
+    $configLoc = BASE_PATH . '/protected/v' . $this->request->getApiVersion() . '/config/apiConfig.php';
     $configObj = new Config($configLoc);
     $configArr = $configObj->parseConfig();
     $this->addConfig($configArr);
@@ -177,7 +177,7 @@ class Application implements Interface_IRunnable {
   }
 
   public function getVersionDir($version) {
-    $vDir = BASE_PATH . '/protected/' . $version;
+    $vDir = BASE_PATH . '/protected/v' . $version;
     if (!file_exists($vDir)) {
       throw new HttpException(400, 2);
     }

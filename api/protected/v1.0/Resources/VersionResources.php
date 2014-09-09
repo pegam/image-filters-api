@@ -115,6 +115,7 @@ return array(
                   'description' => 'Make the image smoother.',
                 ),
               ),
+              'description' => 'Available filters.',
             ),
             'url' => array(
               'type' => 'string',

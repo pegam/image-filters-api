@@ -75,8 +75,8 @@ function handleDownloadedImage($baseDir, $tmpfile, $name) {
   $path = "/media/tmp/{$hash}/{$name}.{$ext}";
   if (!file_exists($baseDir . "/media/tmp/{$hash}")) {
     mkdir($baseDir . "/media/tmp/{$hash}");
-    rename($tmpfile, $baseDir . $path);
   }
+  rename($tmpfile, $baseDir . $path);
   if (file_exists($tmpfile)) {
     unlink($tmpfile);
   }
