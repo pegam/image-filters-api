@@ -3,12 +3,15 @@
 return array(
   'resources' => array(
     'images' => array(
+      'path' => '/{version}/images',
       'actions' => array(
         'types' => array(
+          'path' => '/{version}/images/types',
           'httpMethod' => 'GET',
           'description' => 'Returns all image types that API can work with.',
         ),
         'filter' => array(
+          'path' => '/{version}/images/filter',
           'httpMethod' => 'POST',
           'parameters' => array(
             'name' => array(
@@ -137,6 +140,7 @@ return array(
           'description' => 'Applies filter to the image.',
         ),
         'resize' => array(
+          'path' => '/{version}/images/resize',
           'httpMethod' => 'POST',
           'parameters' => array(
             'hsize' => array(
@@ -171,6 +175,7 @@ return array(
           'description' => 'Scale image to a new size.',
         ),
         'crop' => array(
+          'path' => '/{version}/images/crop',
           'httpMethod' => 'POST',
           'parameters' => array(
             'xpoint' => array(
@@ -217,6 +222,7 @@ return array(
           'description' => 'Remove outer parts of the image.',
         ),
         'fitin' => array(
+          'path' => '/{version}/images/fitin',
           'httpMethod' => 'POST',
           'parameters' => array(
             'hsize' => array(
@@ -251,6 +257,7 @@ return array(
           'description' => 'Change image size to fit in corresponding rectangle and keep aspect ratio.',
         ),
         'flip' => array(
+          'path' => '/{version}/images/flip',
           'httpMethod' => 'POST',
           'parameters' => array(
             'direction' => array(
@@ -282,6 +289,7 @@ return array(
           'description' => 'Mirror image across the horizontal, vertical or both axes.',
         ),
         'rotate' => array(
+          'path' => '/{version}/images/rotate',
           'httpMethod' => 'POST',
           'parameters' => array(
             'angle' => array(

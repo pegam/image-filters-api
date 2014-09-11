@@ -14,18 +14,27 @@ class Resources implements Interface_ICoreComponent {
     $return = null;
     if ($controller === 'api') {
       $return = $this->resources;
-    }
-    if ($action === 'allactions') {
+    } else if ($action === 'allactions') {
       $return = array($controller => $this->resources['resources'][$controller]);
-    }
-    if (isset($this->resources['resources'][$controller]['actions'][$action])) {
+    } else if (isset($this->resources['resources'][$controller]['actions'][$action])) {
       $return = array($controller => array('action' => array($action => $this->resources['resources'][$controller]['actions'][$action])));
     }
     if ($return) {
       $return = array('version' => Api::app()->request->getApiVersion()) + $return;
+      $this->setVersion($return);
       return $return;
     }
     return null;
+  }
+
+  public function setVersion(array &$resources) {
+    foreach ($resources as $key => &$val) {
+      if ($key === 'path') {
+        $val = str_replace('{version}', 'v' . Api::app()->request->getApiVersion(), $val);
+      } else if (is_array($val)) {
+        $this->setVersion($val);
+      }
+    }
   }
 
 }
