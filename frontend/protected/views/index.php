@@ -8,7 +8,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/api-actions.js"></script>
-    <script src="js/hash.js"></script>
     <script src="js/tooltip.js"></script>
     <script src="js/submit.js"></script>
     <script>

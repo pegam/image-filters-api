@@ -31,7 +31,7 @@ function buildUrl($apiDomain, $secure) {
   }
   $path = substr($path, 0, -1);
   if ($secure) {
-    $url .= signature($path);
+    $url .= '/' . signature($path);
   }
-  return "{$apiDomain}/{$path}";
+  return "{$url}/{$path}";
 }

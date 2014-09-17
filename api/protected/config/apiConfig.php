@@ -24,7 +24,7 @@ return array(
     ),
     'debug' => false,
     'latestActiveVersion' => '1.0',
-    'secureApi' => false,
+    'secureApi' => true,
     'apiKeysFile' => BASE_PATH . '/protected/storage/apiKeys.tsv',
 //    'uploadedImgMaxSize'          => 10240, // php.ini - upload_max_filesize i post_max_size
 );

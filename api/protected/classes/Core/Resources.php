@@ -12,10 +12,12 @@ class Resources implements Interface_ICoreComponent {
     $controller = strtolower($controller);
     $action = strtolower($action);
     $return = null;
-    if ($controller === 'api') {
+    if ($controller === 'resources') {
       $return = $this->resources;
     } else if ($action === 'allactions') {
-      $return = array($controller => $this->resources['resources'][$controller]);
+      if (isset($this->resources['resources'][$controller])) {
+        $return = array($controller => $this->resources['resources'][$controller]);
+      }
     } else if (isset($this->resources['resources'][$controller]['actions'][$action])) {
       $return = array($controller => array('action' => array($action => $this->resources['resources'][$controller]['actions'][$action])));
     }

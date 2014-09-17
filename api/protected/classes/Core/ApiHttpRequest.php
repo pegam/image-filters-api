@@ -13,6 +13,7 @@ class ApiHttpRequest implements Interface_ICoreComponent {
   protected $version;
   protected $controllerId;
   protected $actionId;
+  protected $restOfPath = array();
 
   public function init() {
     # SSL
@@ -82,7 +83,7 @@ class ApiHttpRequest implements Interface_ICoreComponent {
     }
     # controller
     if (!isset($parts[0])) {
-      $this->controllerId = 'Api';
+      $this->controllerId = 'Resources';
     } else {
       $this->controllerId = strtolower(trim(array_shift($parts)));
     }
@@ -93,7 +94,8 @@ class ApiHttpRequest implements Interface_ICoreComponent {
       $this->actionId = strtolower(trim(array_shift($parts)));
     }
     if (count($parts) > 0) {
-      for ($i = 3; $i < count($parts); $i += 2) {
+      $this->restOfPath = $parts;
+      for ($i = 0; $i < count($parts); $i += 2) {
         $key = trim($this->stripSlashes($parts[$i]));
         $val = '';
         if (isset($parts[$i + 1])) {
@@ -166,6 +168,10 @@ class ApiHttpRequest implements Interface_ICoreComponent {
 
   public function getPathWithQuery() {
     return $this->pathWithQuery;
+  }
+
+  public function getRestOfPath() {
+    return $this->restOfPath;
   }
 
 }

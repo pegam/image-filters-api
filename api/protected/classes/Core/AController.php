@@ -85,8 +85,11 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
     }
   }
 
-  protected function printResourcesDocumentation($actionId) {
-    $res = Api::app()->resources->get($this->controller, $actionId);
+  protected function printResourcesDocumentation($actionId, $controllerId = null) {
+    if ($controllerId === null) {
+      $controllerId = $this->controller;
+    }
+    $res = Api::app()->resources->get($controllerId, $actionId);
     if ($res) {
       if (!headers_sent()) {
         header(Http_HttpCode::getMessage(200));

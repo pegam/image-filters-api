@@ -116,6 +116,7 @@ function loadApiActionsSuccess(response, textStatus, jqXHR) {
 }
 
 function loadApiActionsError(jqXHR) {
+  $('#version').addClass('text-color-red').html('Error.');
   $('#api-actions-error').removeClass('no-display');
   $('#loader-container').addClass('no-display');
   $('#api-actions').addClass('no-display');

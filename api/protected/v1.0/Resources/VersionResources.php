@@ -3,7 +3,6 @@
 return array(
   'resources' => array(
     'images' => array(
-      'path' => '/{version}/images',
       'actions' => array(
         'types' => array(
           'path' => '/{version}/images/types',

@@ -11,7 +11,7 @@ function buildUrl($apiDomain, $secure) {
   $url = $apiDomain;
   $path = 'images/types';
   if ($secure) {
-    $url .= signature($path);
+    $url .= '/' . signature($path);
   }
-  return "{$apiDomain}/{$path}";
+  return "{$url}/{$path}";
 }
