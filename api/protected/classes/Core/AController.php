@@ -93,9 +93,9 @@ abstract class AController implements Interface_IController, Interface_ICoreComp
     if ($res) {
       if (!headers_sent()) {
         header(Http_HttpCode::getMessage(200));
-        header('Content-Type: application/json');
+        header('Content-Type: application/json; charset=utf-8');
       }
-      echo json_encode($res, JSON_PRETTY_PRINT);
+      echo json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
     return $res;
   }

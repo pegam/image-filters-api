@@ -1,7 +1,7 @@
 <?php
 
 include 'protected/apiDomain.php';
-include 'init.php';
+include 'protected/init.php';
 
 if (empty($_GET) || empty($_GET['api_action']) || empty($_GET['url'])) {
   error('Params missing.', 'HTTP/1.1 400 Bad Request');

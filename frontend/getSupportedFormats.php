@@ -1,7 +1,7 @@
 <?php
 
 include 'protected/apiDomain.php';
-include 'init.php';
+include 'protected/init.php';
 
 $url = buildUrl($apiDomain, $secure);
 $response = apiCurl($url);

@@ -1,6 +1,6 @@
 <?php
 
-include 'init.php';
+include 'protected/init.php';
 
 $currentDir = dirname(__FILE__);
 
