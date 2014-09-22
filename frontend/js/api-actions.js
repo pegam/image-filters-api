@@ -135,18 +135,19 @@ function addPlainChoice(parent, name, param) {
 
 function addFilterChoice(parent, name, param) {
   var id = 'f_' + name,
-      el = '<select id="' + id + '" name="' + name + '" onchange="addFilterParams(this.value)"',
+      el = '<select id="' + id + '" name="' + name + '"',
       br = '<br />',
       label = '<label for="' + id + '">';
+  if (name === 'out') {
+    label += 'resulting image format';
+  } else {
+    el += ' onchange="addFilterParams(this.value)"';
+    label += name;
+  }
   if (param['description']) {
     el += ' data-tooltip="' + param['description'] + '" class="tooltip" onmouseover="hoverOverTooltip(this, event)" onmouseout="hoverOutTooltip(this)"';
   }
   el += '>';
-  if (name === 'out') {
-    label += 'resulting image format';
-  } else {
-    label += name;
-  }
   if (param['required']) {
     label += ' <span class="text-color-red">*</span>';
   }
@@ -170,6 +171,7 @@ function addFilterChoice(parent, name, param) {
 }
 
 function addFilterParams(filter) {
+  $('f_out').val('');
   $('#filter-params').empty();
   $('#imgage-edited').addClass('no-display');
   $('#edited-image > div.save-img > a').parent().addClass('no-display');
