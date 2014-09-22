@@ -39,7 +39,7 @@ return array(
         'moreInfo' => "",
     ),
     10 => array(
-        'message'  => "File is missing (POST).",
+        'message'  => "File is missing or empty (POST).",
         'moreInfo' => "",
     ),
     11 => array(

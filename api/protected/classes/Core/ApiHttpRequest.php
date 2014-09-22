@@ -78,6 +78,9 @@ class ApiHttpRequest implements Interface_ICoreComponent {
     } else {
       $this->version = strtolower(trim(substr(array_shift($parts), 1)));
     }
+    if (!headers_sent()) {
+      header('X-API-Version: ' . $this->version);
+    }
     if (!preg_match(ApiHttpRequest::VERSION_PATTERN, $this->version)) {
       throw new HttpException(400, 2);
     }

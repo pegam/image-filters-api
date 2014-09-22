@@ -16,6 +16,11 @@ class Image_ImageSender {
         header(Http_HttpCode::getMessage(200));
         header('Content-Type: ' . $type);
         header('Content-Length: ' . $size);
+        $filename = basename($this->oimage->getFileLocation());
+        if ($filename) {
+          header('Content-Disposition: inline; filename="' . $filename . '"');
+          header('X-Filename: ' . $filename);
+        }
         readfile($this->oimage->getFileLocation());
       }
     }

@@ -45,16 +45,28 @@ class Image_DownloadedImage {
       $this->doGet();
     } else {
       if (!$_FILES) {
-        throw new HttpException(400, 10);
-      }
-      $filesArrElement = reset($_FILES);
-      if (!$filesArrElement['tmp_name']) {
-        throw new HttpException(400, 10);
-      }
-      $this->origFilename = $filesArrElement['name'];
-      $this->localFileLoc = $this->tempDir . '/' . basename($filesArrElement['tmp_name']);
-      if (!rename($filesArrElement['tmp_name'], $this->localFileLoc)) {
-        throw new HttpException(500);
+        $this->origFilename = 'image';
+        $m = array();
+        if (!empty($_SERVER['HTTP_CONTENT_DISPOSITION']) && preg_match('/; filenames=["\']([^"\']+)["\']/i', $_SERVER['HTTP_CONTENT_DISPOSITION'], $m)) {
+          $this->origFilename = $m[1];
+        } else if (!empty($_SERVER['HTTP_X_FILENAME'])) {
+          $this->origFilename = $_SERVER['HTTP_X_FILENAME'];
+        }
+        $this->localFileLoc = $this->tempDir . '/' . uniqid();
+        file_put_contents($this->localFileLoc, file_get_contents('php://input'));
+        if (!@filesize($this->localFileLoc)) {
+          throw new HttpException(400, 10);
+        }
+      } else {
+        $filesArrElement = reset($_FILES);
+        if (!$filesArrElement['tmp_name']) {
+          throw new HttpException(400, 10);
+        }
+        $this->origFilename = $filesArrElement['name'];
+        $this->localFileLoc = $this->tempDir . '/' . basename($filesArrElement['tmp_name']);
+        if (!rename($filesArrElement['tmp_name'], $this->localFileLoc)) {
+          throw new HttpException(500);
+        }
       }
     }
   }

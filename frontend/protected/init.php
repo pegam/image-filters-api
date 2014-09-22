@@ -2,7 +2,7 @@
 
 header('HTTP/1.1 500 Internal Server Error');
 
-$secure = true;
+$secure = false;
 
 function signature(&$pathWithQuery) {
   $clientId = '53ecca8609d14';

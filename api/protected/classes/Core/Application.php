@@ -23,17 +23,12 @@ class Application implements Interface_IRunnable {
 
   public function __construct($configLoc = null) {
     Api::setApplication($this);
-
     set_exception_handler(array($this, 'handleException'));
-
     $this->setEnv();
-
     $configObj = new Config($configLoc);
     $configArr = $configObj->parseConfig();
     $this->addConfig($configArr);
-
     $this->registerCoreComponents();
-
     register_shutdown_function(array($this, 'shutdown'), $this->debug);
   }
 
